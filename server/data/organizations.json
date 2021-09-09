@@ -1,22 +1,32 @@
 [
 	{
-		"OrganizationName": "Organization One",
-		"OrganizationId": "Org1",
-		"Description": "This is organization 1"
+		"OrganizationName": "Deep Sea",
+		"OrganizationId": "1",
+		"Description": "Fishing a few miles off of the ocean's shore for Marlin, Mahi-Mahi, Red Snapper, and Sailfish!"
 	},
 	{
-		"OrganizationName": "Organization Two",
-		"OrganizationId": "Org2",
-		"Description": "This is organization 2"
+		"OrganizationName": "River",
+		"OrganizationId": "2",
+		"Description": "Fishing off of a drift boat as you float down a river.  Catch: Rainbow Trout, Brown Trout, Brook Trout, Cutthroat Trout!"
     },
     {
-		"OrganizationName": "Organization Three",
-		"OrganizationId": "Org3",
-		"Description": "This is organization 3" 
+		"OrganizationName": "Lake",
+		"OrganizationId": "3",
+		"Description": "Classic Bass fishing on a lake!" 
 	},
 	{
-		"OrganizationName": "Organization Four",
-		"OrganizationId": "Org4",
-		"Description": "This is organization 4"
+		"OrganizationName": "Small Creek",
+		"OrganizationId": "4",
+		"Description": "Wading through small creeks to catch either all kinds of Trout or Smallmouth Bass!"
+	},
+	{
+		"OrganizationName": "Ice",
+		"OrganizationId": "5",
+		"Description": "Bundle up and get ready to catch massive lethargic fish under the ice! Catch Walleye, Trout, and Largemouth Bass!" 
+	},
+	{
+		"OrganizationName": "Ocean Flats",
+		"OrganizationId": "6",
+		"Description": "Go fishing off of a small boat for redfish, snook, juvenile tarpon, bonefish, permit, sea trout and others!" 
 	}
 ]

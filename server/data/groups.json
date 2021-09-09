@@ -1,27 +1,21 @@
 [
     {
         "GroupId": 1,
-        "GroupName": "United Front",
-        "OrganizationName": "Organization One",
+        "GroupName": "SS Deep Sea Boat",
+        "OrganizationName": "Deep Sea",
         "SponsorName": "Natalie Rachelle",
         "SponsorPhone": "555-000-0000",
         "SponsorEmail": "nat214@gmail.com",
         "MaxGroupSize": 7,
         "Members": [
             {
-                "MemberId": 2,
-                "MemberEmail": "theaterkid0625@gmail.com",
-                "MemberName": "Ezra Aiden",
-                "MemberPhone": "555-000-0002"
-            },
-            {
-                "MemberId": 4,
+                "MemberId": 1,
                 "MemberEmail": "aslan_the_great@gmail.com",
                 "MemberName": "Elisha Aslan",
                 "MemberPhone": "555-000-0003"
             },
             {
-                "MemberId": 6,
+                "MemberId": 2,
                 "MemberEmail": "susa2007@gmail.com",
                 "MemberName": "Siddalee Grace",
                 "MemberPhone": "555-000-0020"
@@ -30,12 +24,12 @@
     },
     {
         "GroupId": 2,
-        "GroupName": "Warriors",
-        "OrganizationName": "Organization Two",
-        "SponsorName": "Brittany Ray",
-        "SponsorPhone": "555-000-0004",
-        "SponsorEmail": "brit805@aol.com",
-        "MaxGroupSize": 7,
+        "GroupName": "Creek Fishing Fun",
+        "OrganizationName": "Small Creek",
+        "SponsorName": "Mr. Wade",
+        "SponsorPhone": "123-3211",
+        "SponsorEmail": "newEmail@test.com",
+        "MaxGroupSize": 5,
         "Members": [
             {
                 "MemberId": 1,
@@ -44,27 +38,33 @@
                 "MemberPhone": "555-000-0005"
             },
             {
-                "MemberId": 5,
+                "MemberId": 2,
                 "MemberEmail": "thebro@gmail.com",
                 "MemberName": "Zephaniah Hughes",
                 "MemberPhone": "555-000-0006"
+            },
+            {
+                "MemberId": 3,
+                "MemberEmail": "testtest@test.com",
+                "MemberName": "Billy Joe",
+                "MemberPhone": "123-1234"
             }
         ]
     },
     {
         "GroupId": 3,
-        "GroupName": "Strategy One",
-        "OrganizationName": "Organization Three",
+        "GroupName": "Ice Fishing Adventures",
+        "OrganizationName": "Ice",
         "SponsorName": "Zachary Westly",
         "SponsorPhone": "555-000-0012",
         "SponsorEmail": "zwest90@gmail.com",
         "MaxGroupSize": 7,
         "Members": [
             {
-                "MemberId": 3,
-                "MemberEmail": "ian_the_great@gmail.com",
-                "MemberName": "Ian Auston",
-                "MemberPhone": "555-000-0025"
+                "MemberId": 1,
+                "MemberEmail": "testing@test.com",
+                "MemberName": "Billy Bob Joe",
+                "MemberPhone": "321-1234"
             }
         ]
     }
