@@ -32,19 +32,19 @@
         "MaxGroupSize": 5,
         "Members": [
             {
-                "MemberId": 1,
+                "MemberId": 3,
                 "MemberEmail": "pursy1222@gmail.com",
                 "MemberName": "Pursalane Faye",
                 "MemberPhone": "555-000-0005"
             },
             {
-                "MemberId": 2,
+                "MemberId": 4,
                 "MemberEmail": "thebro@gmail.com",
                 "MemberName": "Zephaniah Hughes",
                 "MemberPhone": "555-000-0006"
             },
             {
-                "MemberId": 3,
+                "MemberId": 5,
                 "MemberEmail": "testtest@test.com",
                 "MemberName": "Billy Joe",
                 "MemberPhone": "123-1234"
@@ -61,10 +61,27 @@
         "MaxGroupSize": 7,
         "Members": [
             {
-                "MemberId": 1,
+                "MemberId": 6,
                 "MemberEmail": "testing@test.com",
                 "MemberName": "Billy Bob Joe",
                 "MemberPhone": "321-1234"
+            }
+        ]
+    },
+    {
+        "GroupId": 4,
+        "GroupName": "Ocean Flats Fishing",
+        "OrganizationName": "Ocean Flats",
+        "SponsorName": "Zachary Bob",
+        "SponsorPhone": "555-000-1234",
+        "SponsorEmail": "zbob90@gmail.com",
+        "MaxGroupSize": 7,
+        "Members": [
+            {
+                "MemberId": 7,
+                "MemberEmail": "testing@test.com",
+                "MemberName": "Joe Vaughn",
+                "MemberPhone": "321-4321"
             }
         ]
     }

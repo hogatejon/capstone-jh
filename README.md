@@ -78,4 +78,58 @@
 
   ### Rough Ideas for implementation:
   - Change color based on group availability.
+  - Should build a default component to handle bogus paths
+  - **Lazy load all of the features**, if there is a core folder probably shouldn't be lazy loaded. Most likely will be fine without a core, can just use the app module for core features since the app will not be massive.
+  - Possibly look into directives for adding a loading mask?
+
+  - Main screen that shows all Organizations
+
+  - May have to create a User model.
+
+  ### Stupid show off Ideas:
+
+  - Animated water background
+
+  ### Brainstorming All of the Modules
+  - Login/Signup Module
+  - Loading Module (take care of loading mask)
+  - Module for viewing all the data.
   - 
+
+  ### Components:
+
+  - Header Component
+  - Main Component
+    - Organization View Component *Home Screen essentially*
+      - Individual Org Panel Component
+    - Multiple Groups Details Component (actual groups depends on the org selected)
+      - Group Component
+      - Admin needs ability to edit/add groups from here.
+      - Regular User
+
+
+    - Individual Group Details View (drill into more details of a specific group)
+      - Admin will have the ability to edit/delete a member from the group here.
+      - Register Member Component.
+  - Footer Component
+
+
+  - A profile component, could display profile info. (maybe allow the user to change user name/password)
+
+  - An admin only view all data component.
+  
+
+  ### Services:
+
+  - Some kind of message service for toast messages.
+
+  - LoginService (Login request, add a user, username available?) *Low Priority*
+
+  - Group Service
+    - get all groups, get group by id, get group by org, add a group, delete a group, edit a group
+
+  - Member Service
+    - add member to a group, delete a member, edit a member in a group, Get a specific member of a group
+
+  - Organization Service
+    - get all organizations.

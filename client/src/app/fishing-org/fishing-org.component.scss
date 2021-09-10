@@ -1,0 +1,13 @@
+h1 {
+  font-size: 24pt
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+section {
+  width: 33%;
+}

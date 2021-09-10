@@ -1,0 +1,21 @@
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: auto;
+  height: 2.25rem;
+  display: flex;
+  background-color: #222222;
+  align-items: center;
+}
+
+ul > li {
+  display: inline;
+  color: white;
+  margin: 0 1rem;
+  text-align: center;
+}
+
+li > a {
+  color: white;
+  text-decoration: none;
+}
