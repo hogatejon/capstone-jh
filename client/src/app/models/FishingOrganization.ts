@@ -1,5 +1,6 @@
 export interface FishingOrganization {
   OrganizationName: string;
-  OrganizationId: number;
+  OrganizationId: string;
   Description: string;
+  imageUrl?: string;
 }

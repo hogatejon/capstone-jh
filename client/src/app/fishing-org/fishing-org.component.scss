@@ -1,13 +1,14 @@
-h1 {
-  font-size: 24pt
-}
-
 .flex-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
+  flex-grow: 0;
+  justify-content: space-between;
   align-items: center;
+}
+
+h1 {
+  padding-left: 1rem;
 }
 
 section {
@@ -15,7 +16,15 @@ section {
   margin: 1rem;
 }
 
-@media (max-width: 444px) {
+@media (min-width: 481px) and  (max-width: 768px) {
+  section {
+    width: 33%;
+    max-width: initial;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
   section {
     width: 100%;
     max-width: initial;

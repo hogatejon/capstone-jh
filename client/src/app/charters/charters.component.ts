@@ -4,11 +4,11 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-charter',
-  templateUrl: './charter.component.html',
-  styleUrls: ['./charter.component.scss']
+  selector: 'app-charters',
+  templateUrl: './charters.component.html',
+  styleUrls: ['./charters.component.scss']
 })
-export class CharterComponent implements OnInit, OnDestroy {
+export class ChartersComponent implements OnInit, OnDestroy {
 
   ngDestroyed$: Subject<boolean> = new Subject();
   orgType: string;

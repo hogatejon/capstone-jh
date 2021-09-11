@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Route, Routes, RouterModule } from '@angular/router';
-import { CharterComponent } from './charter/charter.component';
+import { ChartersComponent } from './charters/charters.component';
 import { FishingOrgComponent } from './fishing-org/fishing-org.component';
 
 const fallbackRoute: Route = {
@@ -13,7 +13,7 @@ const routes: Routes = [
     path: '',
     children: [
       { path: 'home', component: FishingOrgComponent },
-      { path: 'charter', component: CharterComponent },
+      { path: 'charters', component: ChartersComponent },
       fallbackRoute
     ]
   }

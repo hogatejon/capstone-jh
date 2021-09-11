@@ -18,7 +18,7 @@ export class OrganizationComponent implements OnInit {
   }
 
   navToGroup() {
-    this.router.navigate(['/charter', { orgType: this.orgName }]);
+    this.router.navigate(['/charters', { orgType: this.orgName }]);
   }
 
 }
