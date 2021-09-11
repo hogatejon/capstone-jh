@@ -8,6 +8,7 @@ import { MainComponent } from './main/main.component';
 import { NavComponent } from './nav/nav.component';
 import { FishingOrgComponent } from './fishing-org/fishing-org.component';
 import { OrganizationComponent } from './fishing-org/organization/organization.component';
+import { CharterComponent } from './charter/charter.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { OrganizationComponent } from './fishing-org/organization/organization.c
     MainComponent,
     NavComponent,
     FishingOrgComponent,
-    OrganizationComponent
+    OrganizationComponent,
+    CharterComponent
   ],
   imports: [
     AppRoutingModule,

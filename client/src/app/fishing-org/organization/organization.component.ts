@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-organization',
@@ -9,11 +10,15 @@ export class OrganizationComponent implements OnInit {
 
   @Input() orgName: string;
   @Input() orgDescription: string;
-  @Input() image: string;
+  @Input() image: string
 
-  constructor() { }
+  constructor(private readonly router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  navToGroup() {
+    this.router.navigate(['/charter', { orgType: this.orgName }]);
   }
 
 }
