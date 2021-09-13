@@ -13,9 +13,12 @@ import { GroupService } from './group.service';
 export class ChartersComponent implements OnInit, OnDestroy {
 
   ngDestroyed$: Subject<boolean> = new Subject();
-  orgId: string;
+  orgName: string;
   charters: Charter[];
+  filteredCharters: Charter[];
   showCharterModal: boolean = false;
+  fishingOrgs = ['Deep Sea', 'River', 'Lake', 'Small Creek', 'Ice', 'Inshore'];
+  isLoading: boolean = true;
 
   constructor(private readonly route: ActivatedRoute,
               private readonly groupService: GroupService) { }
@@ -37,14 +40,24 @@ export class ChartersComponent implements OnInit, OnDestroy {
     this.subscribeToAllGroups();
   }
 
+  filterByOrg(orgName: string, firstFilter: boolean = false) {
+    console.log(orgName)
+    if (firstFilter) {
+      (<HTMLSelectElement>document.getElementById('orgFilter')).value = this.orgName;
+    }
+    if (orgName !== '' && this.charters?.length) {
+      this.filteredCharters = this.charters.filter(charter => charter.OrganizationName === orgName);
+    } else {
+      this.filteredCharters = this.charters;
+    }
+  }
+
   private subscribeToRouteParams() {
     this.route.params.pipe(takeUntil(this.ngDestroyed$)).subscribe((params: Params) => {
-      if (params?.orgId) {
-        this.orgId = params.orgId;
-        this.subscribeToSpecificGroup(this.orgId);
-      } else {
-        this.subscribeToAllGroups();
+      if (params?.orgName) {
+        this.orgName = params.orgName;
       }
+      this.subscribeToAllGroups();
     }
     // TODO: Add Error Handling here.
     );
@@ -54,6 +67,13 @@ export class ChartersComponent implements OnInit, OnDestroy {
     this.groupService.getAllCharters<Charter>().pipe(takeUntil(this.ngDestroyed$)).subscribe((charters) => {
       if (charters) {
         this.charters = charters;
+        if (this.orgName) {
+          console.log('run')
+          this.filterByOrg(this.orgName, true);
+        } else {
+          this.filteredCharters = this.charters;
+        }
+        this.isLoading = false;
       }
     });
   }
@@ -61,6 +81,7 @@ export class ChartersComponent implements OnInit, OnDestroy {
   private subscribeToSpecificGroup(orgId: string) {
     this.groupService.getChartersByOrg<Charter>(orgId).pipe(takeUntil(this.ngDestroyed$)).subscribe((charters) => {
       this.charters = charters;
+      this.isLoading = false;
     });
   }
 

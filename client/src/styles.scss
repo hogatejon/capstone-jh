@@ -26,6 +26,6 @@ button {
   font-size: 0.75rem;
 }
 
-.form-label::before {
+.form-label-required::before {
   content: "* "
 }

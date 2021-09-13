@@ -1,11 +1,19 @@
+<app-loader *ngIf="isLoading">{{ isLoading }}</app-loader>
 <app-add-charter *ngIf="showCharterModal"
                  (modalClose)="hideCharterModal()"></app-add-charter>
 <section class="top-container">
-  <h1>Charters <span>({{ charters.length }})</span></h1>
+  <h1>Charters <span>({{ filteredCharters?.length }})</span></h1>
+  <div class="org-filter">
+    <label class="form-label">Filter by Org</label>
+    <select id="orgFilter" name="orgName" (change)="filterByOrg($event.target.value)">
+      <option value="">All Charters</option>
+      <option *ngFor="let org of fishingOrgs" value="{{ org }}">{{ org }}</option>
+    </select>
+  </div>
   <button (click)="addCharter()">+ Add a Charter</button>
 </section>
 <section class="charter-container">
-  <div *ngFor="let charter of charters; let i = index">
+  <div *ngFor="let charter of filteredCharters; let i = index">
     <app-group [group]="charter"
                [charterNum]="i + 1"></app-group>
   </div>

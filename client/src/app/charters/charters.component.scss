@@ -7,3 +7,12 @@
 button {
   background-color: #a7cdbd;
 }
+
+div > label {
+  padding-right: 0.5rem;
+}
+
+.org-filter {
+  display: flex;
+  flex-direction: column;
+}

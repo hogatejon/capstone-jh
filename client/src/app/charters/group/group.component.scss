@@ -5,6 +5,7 @@ div.container {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  box-shadow: 0 3px 6px rgb(0 0 0 / 30%);
 }
 
 header {
@@ -44,7 +45,5 @@ section.content {
 }
 
 .no-avail {
-  color: #E66360;
+  color: #E66360 !important;
 }
-
-
