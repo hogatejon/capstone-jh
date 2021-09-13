@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Charter } from 'src/app/models/Charter';
+import { GroupService } from 'src/app/shared/group.service';
 
 @Component({
   selector: 'app-group',
@@ -10,12 +12,14 @@ export class GroupComponent implements OnInit {
 
   @Input() group: Charter;
   @Input() charterNum: number;
-  @Output() deleteCharter = new EventEmitter<number>();
+  @Output() deleteCharter = new EventEmitter<Charter>();
 
   availableText: string;
   noAvailability: boolean;
 
-  constructor() { }
+  constructor(private readonly groupService: GroupService,
+              private readonly router: Router,
+              private readonly route: ActivatedRoute) { }
 
   ngOnInit() {
     this.setAvailableText();
@@ -35,7 +39,12 @@ export class GroupComponent implements OnInit {
   }
 
   deleteGroup() {
-    this.deleteCharter.emit(this.group.GroupId);
+    this.deleteCharter.emit(this.group);
+  }
+
+  navToGroupDetails() {
+    this.groupService.updateSelectedGroup(this.group);
+    this.router.navigate(['details'], { relativeTo: this.route });
   }
 
 }

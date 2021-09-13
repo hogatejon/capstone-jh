@@ -16,6 +16,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AboutComponent } from './about/about.component';
 import { ConfirmationComponent } from './shared/confirmation/confirmation.component';
 import { MessageComponent } from './shared/message/message.component';
+import { GroupDetailsComponent } from './group-details/group-details.component';
+import { MemberComponent } from './member/member.component';
+import { AddMemberComponent } from './add-member/add-member.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { MessageComponent } from './shared/message/message.component';
     AddCharterComponent,
     AboutComponent,
     ConfirmationComponent,
-    MessageComponent
+    MessageComponent,
+    GroupDetailsComponent,
+    MemberComponent,
+    AddMemberComponent
   ],
   imports: [
     AppRoutingModule,

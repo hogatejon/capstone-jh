@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Charter } from '../models/Charter';
-import { GroupService } from './group.service';
+import { GroupService } from '../shared/group.service';
 
 @Component({
   selector: 'app-charters',
@@ -24,24 +24,25 @@ export class ChartersComponent implements OnInit, OnDestroy {
   showDeleteModal: boolean = false;
   groupIdDelete: number;
 
-  constructor(private readonly route: ActivatedRoute,
-              private readonly groupService: GroupService) { }
+  constructor(private readonly groupService: GroupService) { }
 
   ngOnInit(): void {
-    this.subscribeToRouteParams();
+    this.subscribeToFilter();
   }
 
   ngOnDestroy() {
     this.ngDestroyed$.next();
+    this.groupService.filterOrg.next(null);
   }
 
   addCharter() {
     this.showCharterModal = true;
   }
 
-  setDeleteModal(groupId) {
+  setDeleteModal(group: Charter) {
     this.showDeleteModal = true;
-    this.groupIdDelete = groupId;
+    this.deleteMessage = `Are you sure you want to delete ${group.GroupName}?`
+    this.groupIdDelete = group.GroupId;
   }
 
   resolveDelete(shouldDelete: boolean) {
@@ -61,7 +62,6 @@ export class ChartersComponent implements OnInit, OnDestroy {
   }
 
   filterByOrg(orgName: string, firstFilter: boolean = false) {
-    console.log(orgName)
     if (firstFilter) {
       (<HTMLSelectElement>document.getElementById('orgFilter')).value = this.orgName;
     }
@@ -72,15 +72,11 @@ export class ChartersComponent implements OnInit, OnDestroy {
     }
   }
 
-  private subscribeToRouteParams() {
-    this.route.params.pipe(takeUntil(this.ngDestroyed$)).subscribe((params: Params) => {
-      if (params?.orgName) {
-        this.orgName = params.orgName;
-      }
+  private subscribeToFilter() {
+    this.groupService.filterOrg.pipe(takeUntil(this.ngDestroyed$)).subscribe((filter: string) => {
+      this.orgName = filter;
       this.subscribeToAllGroups();
-    }
-    // TODO: Add Error Handling here.
-    );
+    });
   }
 
   private subscribeToAllGroups() {
@@ -88,21 +84,14 @@ export class ChartersComponent implements OnInit, OnDestroy {
       if (charters) {
         this.charters = charters;
         if (this.orgName) {
-          console.log('run')
           this.filterByOrg(this.orgName, true);
         } else {
           this.filteredCharters = this.charters;
         }
         this.isLoading = false;
       }
-    });
+    }
+    //TODO: Add Error Handling
+    );
   }
-
-  private subscribeToSpecificGroup(orgId: string) {
-    this.groupService.getChartersByOrg<Charter>(orgId).pipe(takeUntil(this.ngDestroyed$)).subscribe((charters) => {
-      this.charters = charters;
-      this.isLoading = false;
-    });
-  }
-
 }

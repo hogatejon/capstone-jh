@@ -1,0 +1,15 @@
+<app-add-member *ngIf="showMemberModal"
+                [addGroupId]="group?.GroupId"
+                (modalClose)="hideMemberModal()"></app-add-member>
+<section>
+  <header>
+    <h1>{{ group?.GroupName }}</h1>
+    <p>{{ availMessage }}</p>
+    <div>
+      <button *ngIf="!isFull" (click)="addNewMember()">Add New Member</button>
+      <button>Edit Group</button>
+    </div>
+  </header>
+  <app-member *ngFor="let member of group?.Members"
+              [member]="member"></app-member>
+</section>

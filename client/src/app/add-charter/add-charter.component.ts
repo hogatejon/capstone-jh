@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { GroupService } from '../charters/group.service';
+import { GroupService } from '../shared/group.service';
 
 @Component({
   selector: 'app-add-charter',
@@ -45,7 +45,6 @@ export class AddCharterComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     this.submit = true;
-    console.log(this.charterForm.value);
     if (this.charterForm.valid) {
       this.groupService.addCharter(this.charterForm.getRawValue()).subscribe(() => {
         this.exitModal();

@@ -1,0 +1,25 @@
+.panel {
+  border-radius: .25rem;
+  border: 1px solid gray;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 3px 6px rgb(0 0 0 / 30%);
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.buttons > button:last-of-type {
+  background-color: #F26F6A;
+}
+
+button {
+  margin: 0.75rem 0;
+}

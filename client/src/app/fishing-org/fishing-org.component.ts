@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { FishingOrganization } from '../models/FishingOrganization';
+import { GroupService } from '../shared/group.service';
 import { OrganizationService } from './organization.service';
 
 @Component({
@@ -17,7 +18,8 @@ export class FishingOrgComponent implements OnInit, OnDestroy {
   ngDestroyed$: Subject<boolean> = new Subject();
   organizations: Array<FishingOrganization>;
 
-  constructor(private readonly organizationService: OrganizationService) { }
+  constructor(private readonly organizationService: OrganizationService,
+              private readonly groupService: GroupService) { }
 
   ngOnInit(): void {
     this.subscribeToOrg();

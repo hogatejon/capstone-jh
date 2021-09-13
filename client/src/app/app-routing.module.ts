@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Route, Routes, RouterModule } from '@angular/router';
 import { AboutComponent } from './about/about.component';
+import { charterRoutes } from './charters/charters-routing.module';
 import { ChartersComponent } from './charters/charters.component';
 import { FishingOrgComponent } from './fishing-org/fishing-org.component';
+import { GroupDetailsComponent } from './group-details/group-details.component';
 
 const fallbackRoute: Route = {
   path: '**',
@@ -14,7 +16,7 @@ const routes: Routes = [
     path: '',
     children: [
       { path: 'home', component: FishingOrgComponent },
-      { path: 'charters', component: ChartersComponent },
+      ...charterRoutes,
       { path: 'about', component: AboutComponent },
       fallbackRoute
     ]

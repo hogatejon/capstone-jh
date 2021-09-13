@@ -22,4 +22,7 @@
                [charterNum]="i + 1"
                (deleteCharter)="setDeleteModal($event)"></app-group>
   </div>
+  <div *ngIf="filteredCharters?.length === 0" class="no-charters">
+    No Charters are available.
+  </div>
 </section>
