@@ -1,1 +1,12 @@
-<p>charters works!</p>
+<app-add-charter *ngIf="showCharterModal"
+                 (modalClose)="hideCharterModal()"></app-add-charter>
+<section class="top-container">
+  <h1>Charters <span>({{ charters.length }})</span></h1>
+  <button (click)="addCharter()">+ Add a Charter</button>
+</section>
+<section class="charter-container">
+  <div *ngFor="let charter of charters; let i = index">
+    <app-group [group]="charter"
+               [charterNum]="i + 1"></app-group>
+  </div>
+</section>

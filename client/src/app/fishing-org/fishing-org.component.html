@@ -1,9 +1,7 @@
 <app-loader *ngIf="isLoading">{{ isLoading }}</app-loader>
-<h1>Types of Fishing</h1>
+<h1>Home</h1>
 <div class="flex-container">
   <section *ngFor="let org of organizations">
-    <app-organization [orgName]="org.OrganizationName"
-                      [orgDescription]="org.Description"
-                      [image]="org.imageUrl"></app-organization>
+    <app-organization [org]="org"></app-organization>
   </section>
 </div>

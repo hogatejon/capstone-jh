@@ -1,0 +1,19 @@
+<div class="container">
+  <header>
+    <p>Charter #{{ charterNum }}</p>
+    <p [class.no-avail]="noAvailability">{{ availableText }}</p>
+  </header>
+  <section class="content">
+    <h2>{{ group.GroupName }}</h2>
+    <p>
+      This charter has a captain by the name of {{ group.SponsorName }} their phone number
+      is {{ group.SponsorPhone }}.  If you cannot get ahold of them via phone, you can use
+      {{ group.SponsorEmail }}.
+    </p>
+    <div class="button-group">
+      <button class="register-button">Register</button>
+      <button class="details-button">Group Details</button>
+      <button class="delete-button">Delete</button>
+    </div>
+  </section>
+</div>

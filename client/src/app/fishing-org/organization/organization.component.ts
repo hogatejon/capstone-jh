@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FishingOrganization } from 'src/app/models/FishingOrganization';
 
 @Component({
   selector: 'app-organization',
@@ -8,9 +9,7 @@ import { Router } from '@angular/router';
 })
 export class OrganizationComponent implements OnInit {
 
-  @Input() orgName: string;
-  @Input() orgDescription: string;
-  @Input() image: string
+  @Input() org: FishingOrganization;
 
   constructor(private readonly router: Router) { }
 
@@ -18,7 +17,7 @@ export class OrganizationComponent implements OnInit {
   }
 
   navToGroup() {
-    this.router.navigate(['/charters', { orgType: this.orgName }]);
+    this.router.navigate(['/charters', { orgId: this.org.OrganizationId }]);
   }
 
 }

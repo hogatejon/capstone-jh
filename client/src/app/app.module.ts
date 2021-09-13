@@ -10,6 +10,9 @@ import { FishingOrgComponent } from './fishing-org/fishing-org.component';
 import { OrganizationComponent } from './fishing-org/organization/organization.component';
 import { ChartersComponent } from './charters/charters.component';
 import { LoaderComponent } from './loader/loader.component';
+import { GroupComponent } from './charters/group/group.component';
+import { AddCharterComponent } from './add-charter/add-charter.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,12 +22,16 @@ import { LoaderComponent } from './loader/loader.component';
     FishingOrgComponent,
     OrganizationComponent,
     ChartersComponent,
-    LoaderComponent
+    LoaderComponent,
+    GroupComponent,
+    AddCharterComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

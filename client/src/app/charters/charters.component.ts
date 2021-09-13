@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { take, takeUntil } from 'rxjs/operators';
+import { Charter } from '../models/Charter';
+import { GroupService } from './group.service';
 
 @Component({
   selector: 'app-charters',
@@ -11,9 +13,12 @@ import { takeUntil } from 'rxjs/operators';
 export class ChartersComponent implements OnInit, OnDestroy {
 
   ngDestroyed$: Subject<boolean> = new Subject();
-  orgType: string;
+  orgId: string;
+  charters: Charter[];
+  showCharterModal: boolean = false;
 
-  constructor(private readonly route: ActivatedRoute) { }
+  constructor(private readonly route: ActivatedRoute,
+              private readonly groupService: GroupService) { }
 
   ngOnInit(): void {
     this.subscribeToRouteParams();
@@ -23,11 +28,39 @@ export class ChartersComponent implements OnInit, OnDestroy {
     this.ngDestroyed$.next();
   }
 
+  addCharter() {
+    this.showCharterModal = true;
+  }
+
+  hideCharterModal() {
+    this.showCharterModal = false;
+    this.subscribeToAllGroups();
+  }
+
   private subscribeToRouteParams() {
     this.route.params.pipe(takeUntil(this.ngDestroyed$)).subscribe((params: Params) => {
-      if (params) {
-        this.orgType = params.orgType;
+      if (params?.orgId) {
+        this.orgId = params.orgId;
+        this.subscribeToSpecificGroup(this.orgId);
+      } else {
+        this.subscribeToAllGroups();
       }
+    }
+    // TODO: Add Error Handling here.
+    );
+  }
+
+  private subscribeToAllGroups() {
+    this.groupService.getAllCharters<Charter>().pipe(takeUntil(this.ngDestroyed$)).subscribe((charters) => {
+      if (charters) {
+        this.charters = charters;
+      }
+    });
+  }
+
+  private subscribeToSpecificGroup(orgId: string) {
+    this.groupService.getChartersByOrg<Charter>(orgId).pipe(takeUntil(this.ngDestroyed$)).subscribe((charters) => {
+      this.charters = charters;
     });
   }
 

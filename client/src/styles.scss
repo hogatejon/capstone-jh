@@ -7,5 +7,25 @@ body {
 }
 
 h1 {
-  font-size: 24pt
+  font-size: 24pt;
+}
+
+h2 {
+  font-size: 20pt;
+}
+
+button {
+  height: 2rem;
+  padding: 0 1rem;
+  border-radius: 0.25rem;
+  border: 1px solid gray;
+  cursor: pointer;
+}
+
+.form-label {
+  font-size: 0.75rem;
+}
+
+.form-label::before {
+  content: "* "
 }

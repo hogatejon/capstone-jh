@@ -1,0 +1,50 @@
+div.container {
+  border: 1px gray solid;
+  margin-bottom: 1rem;
+  border-radius: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #F7F7F7;
+  border-bottom: 1px gray solid;
+}
+
+header > p {
+  padding: 0 1rem;
+}
+
+header > p:last-of-type {
+  color: #869d7a;
+  font-weight: bold;
+}
+
+section.content {
+  padding: 0 1rem 1rem 1rem;
+  background-color: white;
+}
+
+.button-group {
+  display: flex;
+}
+
+.register-button {
+  margin-right: 1rem;
+  color: white;
+  background-color: #869d7a;
+}
+
+.delete-button {
+  margin-left: auto;
+  background-color: #F26F6A;
+}
+
+.no-avail {
+  color: #E66360;
+}
+
+

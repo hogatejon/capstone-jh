@@ -1,6 +1,6 @@
-<section>
-  <img [src]="image" />
-  <h2>{{ orgName }}</h2>
-  <p>{{ orgDescription }}</p>
+<div>
+  <img [src]="org.imageUrl" />
+  <h2>{{ org.OrganizationName }}</h2>
+  <p>{{ org.Description }}</p>
   <button (click)="navToGroup()">View Available Charters</button>
-</section>
+</div>

@@ -1,0 +1,58 @@
+<div class="blur">
+  <div class="panel">
+    <div class="panel-header">
+      <h2>Add a Charter</h2>
+      <button (click)="exitModal()">Close</button>
+    </div>
+    <section class="panel-content">
+      <form [formGroup]="charterForm">
+        <label class="form-label" for="GroupName">Charter Name</label>
+        <input type="text"
+               formControlName="GroupName"
+               placeholder="Enter Name of Charter here"
+               [class.input-error]="!charterForm.controls['GroupName'].valid && charterForm.controls['GroupName'].touched">
+        <div *ngIf="!charterForm.controls['GroupName'].valid && charterForm.controls['GroupName'].touched"
+           class="validation-error">Provide a Charter Name</div>
+        <label class="form-label" for="SponsorName">Guide Name</label>
+        <input type="text"
+               formControlName="SponsorName"
+               placeholder="Enter Name of Sponsor here"
+               [class.input-error]="!charterForm.controls['SponsorName'].valid && charterForm.controls['SponsorName'].touched">
+        <div *ngIf="!charterForm.controls['SponsorName'].valid && charterForm.controls['SponsorName'].touched"
+             class="validation-error">Provide a Sponsor Name</div>
+        <label class="form-label" for="SponsorPhone">Guide Phone Number</label>
+        <input type="text"
+               formControlName="SponsorPhone"
+               placeholder="Enter Sponsor Phone here"
+               [class.input-error]="!charterForm.controls['SponsorPhone'].valid && charterForm.controls['SponsorPhone'].touched">
+        <div *ngIf="!charterForm.controls['SponsorPhone'].valid && charterForm.controls['SponsorPhone'].touched"
+             class="validation-error">Provide a Phone Number</div>
+        <label class="form-label" for="SponsorEmail">Guide Email</label>
+        <input type="text"
+               formControlName="SponsorEmail"
+               placeholder="Enter Sponsor Email here"
+               [class.input-error]="!charterForm.controls['SponsorEmail'].valid && charterForm.controls['SponsorEmail'].touched">
+        <div *ngIf="!charterForm.controls['SponsorEmail'].valid && charterForm.controls['SponsorEmail'].touched"
+             class="validation-error">Provide an Email</div>
+        <label class="form-label" for="MaxGroupSize">Max Group Size</label>
+        <input type="number"
+               formControlName="MaxGroupSize"
+               placeholder="Enter Max Group Size here"
+               [class.input-error]="!charterForm.controls['MaxGroupSize'].valid && charterForm.controls['MaxGroupSize'].touched">
+        <div *ngIf="!charterForm.controls['MaxGroupSize'].valid && charterForm.controls['MaxGroupSize'].touched"
+             class="validation-error">Provide a Max Group Size</div>
+        <label class="form-label" for="OrganizationName">Organization</label>
+        <select size="1" formControlName="OrganizationName"
+                [class.input-error]="!charterForm.controls['OrganizationName'].valid && charterForm.controls['OrganizationName'].touched">
+          <option value="null">Select an Organization</option>
+          <option *ngFor="let org of fishingOrgs;" value="{{ org }}">{{ org }}</option>
+        </select>
+        <div *ngIf="!charterForm.controls['OrganizationName'].valid && charterForm.controls['OrganizationName'].touched"
+             class="validation-error">Provide an Organization Name</div>
+        <input type="submit"
+               value="Submit Group"
+               (click)="onSubmit()">
+      </form>
+    </section>
+  </div>
+</div>
