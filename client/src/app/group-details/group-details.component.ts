@@ -17,6 +17,7 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
   showMemberModal: boolean = false;
   availMessage: string;
   isFull: boolean;
+  showGroupModal: boolean = false;
 
   constructor(private readonly groupService: GroupService) { }
 
@@ -37,6 +38,15 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
   hideMemberModal() {
     this.subscribeToMembers();
     this.showMemberModal = false;
+  }
+
+  hideGroupModal() {
+    this.subscribeToMembers();
+    this.showGroupModal = false;
+  }
+
+  editGroup() {
+    this.showGroupModal = true;
   }
 
   setAvailability() {

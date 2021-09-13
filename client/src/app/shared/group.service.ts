@@ -44,6 +44,10 @@ export class GroupService {
     return this.http.delete<Charter>(this.deleteGroupByIdUrl + id);
   }
 
+  editGroup<Charter>(group: Charter): Observable<Charter> {
+    return this.http.put<Charter>(this.editGroupUrl, group, this.jsonContentTypeHeaders);
+  }
+
   updateSelectedGroup(group: Charter) {
     this.selectedGroup.next(group);
   }

@@ -1,6 +1,8 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { Charter } from '../models/Charter';
 import { GroupService } from '../shared/group.service';
 
 @Component({
@@ -10,6 +12,7 @@ import { GroupService } from '../shared/group.service';
 })
 export class AddCharterComponent implements OnInit, OnDestroy {
 
+  @Input() currentValue?: Charter
   @Output() modalClose = new EventEmitter<boolean>();
 
   charterForm: FormGroup
@@ -22,6 +25,10 @@ export class AddCharterComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.buildCharterForm();
+    if (this.currentValue) {
+      console.log(this.currentValue);
+      this.charterForm.patchValue(this.currentValue);
+    }
   }
 
   ngOnDestroy() {
@@ -45,8 +52,14 @@ export class AddCharterComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     this.submit = true;
-    if (this.charterForm.valid) {
-      this.groupService.addCharter(this.charterForm.getRawValue()).subscribe(() => {
+    if (this.charterForm.valid && !this.currentValue) {
+      this.groupService.addCharter(this.charterForm.getRawValue()).pipe(takeUntil(this.ngDestroyed$)).subscribe(() => {
+        this.exitModal();
+      });
+    } else {
+      const appendId = this.charterForm.getRawValue();
+      appendId.GroupId = this.currentValue.GroupId;
+      this.groupService.editGroup(appendId).pipe(takeUntil(this.ngDestroyed$)).subscribe(() => {
         this.exitModal();
       });
     }
