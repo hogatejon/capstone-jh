@@ -53,9 +53,6 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
     const max = this.group.MaxGroupSize;
     const current = this.group.Members.length;
 
-    console.log(max);
-    console.log(current);
-
     if (max > current) {
       this.isFull = false;
       this.availMessage = `${current}/${max} Spots Available`;
