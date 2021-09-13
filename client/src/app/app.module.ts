@@ -14,6 +14,8 @@ import { GroupComponent } from './charters/group/group.component';
 import { AddCharterComponent } from './add-charter/add-charter.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AboutComponent } from './about/about.component';
+import { ConfirmationComponent } from './shared/confirmation/confirmation.component';
+import { MessageComponent } from './shared/message/message.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { AboutComponent } from './about/about.component';
     LoaderComponent,
     GroupComponent,
     AddCharterComponent,
-    AboutComponent
+    AboutComponent,
+    ConfirmationComponent,
+    MessageComponent
   ],
   imports: [
     AppRoutingModule,

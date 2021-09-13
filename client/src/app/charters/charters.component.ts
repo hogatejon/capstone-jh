@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subject } from 'rxjs';
-import { take, takeUntil } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 import { Charter } from '../models/Charter';
 import { GroupService } from './group.service';
 
@@ -19,6 +19,10 @@ export class ChartersComponent implements OnInit, OnDestroy {
   showCharterModal: boolean = false;
   fishingOrgs = ['Deep Sea', 'River', 'Lake', 'Small Creek', 'Ice', 'Inshore'];
   isLoading: boolean = true;
+  deleteHeader: string = 'Delete Group';
+  deleteMessage: string = 'Are you sure you want to delete this group?'
+  showDeleteModal: boolean = false;
+  groupIdDelete: number;
 
   constructor(private readonly route: ActivatedRoute,
               private readonly groupService: GroupService) { }
@@ -33,6 +37,22 @@ export class ChartersComponent implements OnInit, OnDestroy {
 
   addCharter() {
     this.showCharterModal = true;
+  }
+
+  setDeleteModal(groupId) {
+    this.showDeleteModal = true;
+    this.groupIdDelete = groupId;
+  }
+
+  resolveDelete(shouldDelete: boolean) {
+    if (shouldDelete) {
+      console.log('should delete');
+      this.groupService.deleteCharterById(this.groupIdDelete).pipe(takeUntil(this.ngDestroyed$)).subscribe(
+        () => this.subscribeToAllGroups()
+        //TODO: Add Error Handling
+      )
+    }
+    this.showDeleteModal = false;
   }
 
   hideCharterModal() {

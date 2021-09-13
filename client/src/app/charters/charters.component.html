@@ -1,6 +1,10 @@
 <app-loader *ngIf="isLoading">{{ isLoading }}</app-loader>
 <app-add-charter *ngIf="showCharterModal"
                  (modalClose)="hideCharterModal()"></app-add-charter>
+<app-confirmation *ngIf="showDeleteModal"
+                  [panelHeader]="deleteHeader"
+                  [message]="deleteMessage"
+                  (resolve)="resolveDelete($event)"></app-confirmation>
 <section class="top-container">
   <h1>Charters <span>({{ filteredCharters?.length }})</span></h1>
   <div class="org-filter">
@@ -15,6 +19,7 @@
 <section class="charter-container">
   <div *ngFor="let charter of filteredCharters; let i = index">
     <app-group [group]="charter"
-               [charterNum]="i + 1"></app-group>
+               [charterNum]="i + 1"
+               (deleteCharter)="setDeleteModal($event)"></app-group>
   </div>
 </section>

@@ -14,6 +14,7 @@ export class GroupService {
   private getGroupsByOrgUrl: string = 'http://localhost:8082/api/groups/byorganization/';
   private addGroupUrl: string = 'http://localhost:8082/api/groups';
   private editGroupUrl: string = 'http://localhost:8082/api/groups';
+  private deleteGroupByIdUrl: string = 'http://localhost:8082/api/groups/'
   jsonContentTypeHeaders = {
     headers: new HttpHeaders().set('Content-Type', 'application/json')
   };
@@ -30,5 +31,9 @@ export class GroupService {
 
   addCharter<Charter>(charter: Charter): Observable<Charter> {
     return this.http.post<Charter>(this.addGroupUrl, charter, this.jsonContentTypeHeaders);
+  }
+
+  deleteCharterById<Charter>(id: number): Observable<Charter> {
+    return this.http.delete<Charter>(this.deleteGroupByIdUrl + id);
   }
 }

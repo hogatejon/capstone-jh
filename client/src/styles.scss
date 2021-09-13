@@ -29,3 +29,12 @@ button {
 .form-label-required::before {
   content: "* "
 }
+
+.fade-in {
+	animation: fadeIn 100ms;
+}
+
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}

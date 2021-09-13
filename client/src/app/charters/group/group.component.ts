@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Charter } from 'src/app/models/Charter';
 
 @Component({
@@ -10,6 +10,7 @@ export class GroupComponent implements OnInit {
 
   @Input() group: Charter;
   @Input() charterNum: number;
+  @Output() deleteCharter = new EventEmitter<number>();
 
   availableText: string;
   noAvailability: boolean;
@@ -31,6 +32,10 @@ export class GroupComponent implements OnInit {
       this.noAvailability = false;
       this.availableText = `${totalMembers}/${maxMembers} Spots Available`;
     }
+  }
+
+  deleteGroup() {
+    this.deleteCharter.emit(this.group.GroupId);
   }
 
 }
