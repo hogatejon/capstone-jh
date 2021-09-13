@@ -2,9 +2,9 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  flex-grow: 0;
+  flex: 1 1 33%;
   justify-content: space-between;
-  align-items: center;
+  align-items: stretch;
 }
 
 h1 {

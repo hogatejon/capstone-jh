@@ -1,6 +1,5 @@
 <app-loader *ngIf="isLoading">{{ isLoading }}</app-loader>
 <h1>Home</h1>
-<hr />
 <div class="flex-container">
   <section *ngFor="let org of organizations">
     <app-organization [org]="org"></app-organization>

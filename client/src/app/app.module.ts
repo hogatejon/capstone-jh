@@ -13,6 +13,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { GroupComponent } from './charters/group/group.component';
 import { AddCharterComponent } from './add-charter/add-charter.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ChartersComponent,
     LoaderComponent,
     GroupComponent,
-    AddCharterComponent
+    AddCharterComponent,
+    AboutComponent
   ],
   imports: [
     AppRoutingModule,

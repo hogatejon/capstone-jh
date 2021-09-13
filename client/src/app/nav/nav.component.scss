@@ -5,17 +5,23 @@ ul {
   height: 2.25rem;
   display: flex;
   background-color: #222222;
-  align-items: center;
+  align-items: stretch;
 }
 
 ul > li {
-  display: inline;
-  color: white;
-  margin: 0 1rem;
-  text-align: center;
+  padding: 0.5rem 1rem;
+  display: inline-block;
+  cursor: pointer;
 }
 
 li > a {
   color: white;
   text-decoration: none;
+
 }
+
+.active {
+  background-color: #a7cdbd;
+}
+
+
