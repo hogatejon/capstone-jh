@@ -1,3 +1,6 @@
+<app-add-member *ngIf="showMemberModal"
+                [addGroupId]="group.GroupId"
+                (modalClose)="hideMemberModal()"></app-add-member>
 <div class="container">
   <header>
     <p>Charter #{{ charterNum }} --- <em>{{ group.OrganizationName }}</em></p>
@@ -7,11 +10,11 @@
     <h2>{{ group.GroupName }}</h2>
     <p>
       This charter has a captain by the name of {{ group.SponsorName }} their phone number
-      is {{ group.SponsorPhone }}.  If you cannot get ahold of them via phone, you can use
+      is {{ group.SponsorPhone | phone }}.  If you cannot get ahold of them via phone, you can use
       {{ group.SponsorEmail }}.
     </p>
     <div class="button-group">
-      <button class="register-button">Register</button>
+      <button class="register-button" (click)="memberModal()">Register</button>
       <button class="details-button" (click)="navToGroupDetails()">Group Details</button>
       <button class="delete-button" (click)="deleteGroup()">Delete</button>
     </div>

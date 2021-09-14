@@ -16,6 +16,7 @@ export class GroupComponent implements OnInit {
 
   availableText: string;
   noAvailability: boolean;
+  showMemberModal: boolean = false;
 
   constructor(private readonly groupService: GroupService,
               private readonly router: Router,
@@ -45,6 +46,14 @@ export class GroupComponent implements OnInit {
   navToGroupDetails() {
     this.groupService.updateSelectedGroup(this.group);
     this.router.navigate(['details'], { relativeTo: this.route, queryParams: { groupId: this.group.GroupId } });
+  }
+
+  memberModal() {
+    this.showMemberModal = true;
+  }
+
+  hideMemberModal() {
+    this.showMemberModal = false;
   }
 
 }

@@ -16,6 +16,7 @@ export class OrganizationComponent implements OnInit {
               private readonly groupService: GroupService) { }
 
   ngOnInit(): void {
+    this.setFishingImages(this.org);
   }
 
   navToGroup() {
@@ -23,4 +24,26 @@ export class OrganizationComponent implements OnInit {
     this.router.navigate(['/charters']);
   }
 
+  setFishingImages(org: FishingOrganization) {
+    switch (org.OrganizationId) {
+      case '1':
+        org.imageUrl = 'assets/deepSea.jpg';
+        break;
+      case '2':
+        org.imageUrl = 'assets/river.jpg';
+        break;
+      case '3':
+        org.imageUrl = 'assets/lake.jpg';
+        break;
+      case '4':
+        org.imageUrl = 'assets/creek.jpg';
+        break;
+      case '5':
+        org.imageUrl = 'assets/ice.jpg';
+        break;
+      case '6':
+        org.imageUrl = 'assets/inshore.jpg';
+        break;
+    };
+  }
 }

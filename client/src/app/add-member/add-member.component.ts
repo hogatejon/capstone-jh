@@ -13,7 +13,7 @@ import { MemberService } from '../shared/member.service';
 export class AddMemberComponent implements OnInit, OnDestroy {
 
   @Input() addGroupId: string;
-  @Input() currentValue: Member;
+  @Input() currentValue?: Member;
   @Output() modalClose = new EventEmitter<boolean>();
   memberForm: FormGroup;
   ngDestroyed$: Subject<boolean> = new Subject();

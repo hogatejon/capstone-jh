@@ -10,7 +10,7 @@
   <div class="member-info">
     <h2>{{ member.MemberName }}</h2>
     <p>Email: {{ member.MemberEmail }}</p>
-    <p>Phone: {{ member.MemberPhone }}</p>
+    <p>Phone: {{ member.MemberPhone | phone}}</p>
   </div>
   <div class="buttons">
     <button (click)="editMember()">Edit Member</button>

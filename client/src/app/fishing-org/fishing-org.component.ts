@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { FishingOrganization } from '../models/FishingOrganization';
@@ -16,54 +16,20 @@ export class FishingOrgComponent implements OnInit, OnDestroy {
 
   isLoading: boolean = true;
   ngDestroyed$: Subject<boolean> = new Subject();
-  organizations: Array<FishingOrganization>;
+  organizations$: Observable<FishingOrganization[]>;
 
-  constructor(private readonly organizationService: OrganizationService,
-              private readonly groupService: GroupService) { }
+  constructor(private readonly organizationService: OrganizationService) { }
 
   ngOnInit(): void {
-    this.subscribeToOrg();
+    this.getOrganizationsAsyncPipe();
   }
 
   ngOnDestroy() {
     this.ngDestroyed$.next();
   }
 
-  setFishingImages(orgs: FishingOrganization[]) {
-    orgs.forEach((org) => {
-      switch (org.OrganizationId) {
-        case '1':
-          org.imageUrl = 'assets/deepSea.jpg';
-          break;
-        case '2':
-          org.imageUrl = 'assets/river.jpg';
-          break;
-        case '3':
-          org.imageUrl = 'assets/lake.jpg';
-          break;
-        case '4':
-          org.imageUrl = 'assets/creek.jpg';
-          break;
-        case '5':
-          org.imageUrl = 'assets/ice.jpg';
-          break;
-        case '6':
-          org.imageUrl = 'assets/inshore.jpg';
-          break;
-      }
-    });
+  getOrganizationsAsyncPipe() {
+    this.organizations$ = this.organizationService.organizations$;
+    this.isLoading = false;
   }
-
-  private subscribeToOrg() {
-    this.organizationService.getOrganizations<FishingOrganization>().pipe(takeUntil(this.ngDestroyed$)).subscribe(
-      orgs => {
-        this.organizations = orgs;
-        if (this.organizations) {
-          this.setFishingImages(this.organizations);
-        }
-        this.isLoading = false;
-      }
-    )
-  }
-
 }
