@@ -23,6 +23,7 @@ export class ChartersComponent implements OnInit, OnDestroy {
   deleteMessage: string = 'Are you sure you want to delete this group?'
   showDeleteModal: boolean = false;
   groupIdDelete: number;
+  noChartersInSearch: boolean = false;
 
   constructor(private readonly groupService: GroupService) { }
 
@@ -69,6 +70,23 @@ export class ChartersComponent implements OnInit, OnDestroy {
       this.filteredCharters = this.charters.filter(charter => charter.OrganizationName === orgName);
     } else {
       this.filteredCharters = this.charters;
+    }
+  }
+
+  searchCharters(event) {
+
+    if (event.target.value) {
+      const searchText = event.target.value.toLowerCase();
+      this.filteredCharters = this.charters.filter(charter => {
+        return charter.GroupName.toLowerCase().indexOf(searchText) !== -1 ||
+               charter.OrganizationName.toLowerCase().indexOf(searchText) !== -1 ||
+               charter.SponsorName.toLowerCase().indexOf(searchText) !== -1 ||
+               charter.SponsorPhone.indexOf(searchText) !== -1 ||
+               charter.SponsorEmail.toLowerCase().indexOf(searchText) !== -1;
+      });
+      console.log(this.filteredCharters);
+    } else {
+      this.filteredCharters = this.charters
     }
   }
 

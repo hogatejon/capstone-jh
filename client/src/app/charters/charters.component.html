@@ -1,4 +1,4 @@
-<app-loader *ngIf="isLoading">{{ isLoading }}</app-loader>
+<app-loader *ngIf="isLoading"></app-loader>
 <app-add-charter *ngIf="showCharterModal"
                  (modalClose)="hideCharterModal()"></app-add-charter>
 <app-confirmation *ngIf="showDeleteModal"
@@ -14,6 +14,9 @@
       <option *ngFor="let org of fishingOrgs" value="{{ org }}">{{ org }}</option>
     </select>
   </div>
+  <input type="text"
+         placeholder="Search"
+         (input)="searchCharters($event)"/>
   <button (click)="addCharter()">+ Add a Charter</button>
 </section>
 <section class="charter-container">

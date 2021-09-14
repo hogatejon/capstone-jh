@@ -20,6 +20,7 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
   availMessage: string;
   isFull: boolean;
   showGroupModal: boolean = false;
+  isLoading: boolean = true;
 
   constructor(private readonly groupService: GroupService,
               private readonly route: ActivatedRoute) { }
@@ -79,6 +80,7 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
     this.groupService.getCharterById(id).pipe(takeUntil(this.ngDestroyed$)).subscribe((group: Charter) => {
       this.group = group;
       this.setAvailability();
+      this.isLoading = false;
     });
   }
 }
