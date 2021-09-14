@@ -1,1 +1,137 @@
-[{"GroupId":3,"GroupName":"Ice Fishing Adventures","OrganizationName":"Ice","SponsorName":"Zachary Westly","SponsorPhone":"555-000-0012","SponsorEmail":"zwest90@gmail.com","MaxGroupSize":8,"Members":[{"MemberId":13,"MemberEmail":"test@lkj.com","MemberName":"Another Test","MemberPhone":"123-123-1231"},{"MemberId":16,"MemberEmail":"guy@test.com","MemberName":"Another Guy","MemberPhone":"123-123-1232"},{"MemberId":17,"MemberEmail":"Test@Test.com","MemberName":"Still Working?","MemberPhone":"123-123-1222"},{"MemberId":18,"MemberEmail":"test@lkj.com","MemberName":"My Name is","MemberPhone":"222-111-2121"},{"MemberId":19,"MemberEmail":"jeff@test.com","MemberName":"Jeff","MemberPhone":"112-111-1111"}]},{"GroupId":11,"GroupName":"Fishing Legends","OrganizationName":"Ice","SponsorName":"Niles Leroy","SponsorPhone":"123-123-1234","SponsorEmail":"test.lkj@test.com","MaxGroupSize":1,"Members":[{"MemberId":15,"MemberEmail":"test@lkj.com","MemberName":"The Awesomest Member There Ever Was","MemberPhone":"123-123-1231"}]},{"GroupId":12,"GroupName":"Fishing for Dummies","OrganizationName":"Lake","SponsorName":"Bob Vance","SponsorPhone":"123-123-1234","SponsorEmail":"testlkj@test.com","MaxGroupSize":1,"Members":[{"MemberId":8,"MemberEmail":"testing@test.com","MemberName":"Joe Vaughn","MemberPhone":"321-4321"}]},{"GroupId":13,"GroupName":"River Guiding Extreme 2","OrganizationName":"River","SponsorName":"Ron the Guide","SponsorPhone":"122-123-1221","SponsorEmail":"test@google.com","MaxGroupSize":2,"Members":[{"MemberId":20,"MemberEmail":"Test@lk","MemberName":"Test","MemberPhone":"123-123-1231"}]},{"GroupId":14,"GroupName":"Rushing Rapids","OrganizationName":"Inshore","SponsorName":"John Smith","SponsorPhone":"321-321-3211","SponsorEmail":"anothertest@test.com","MaxGroupSize":3,"Members":[]},{"GroupId":18,"GroupName":"Test Name","OrganizationName":"Small Creek","SponsorName":"Guide Name","SponsorPhone":"123-123-1231","SponsorEmail":"test@lkj","MaxGroupSize":5,"Members":[]},{"GroupId":21,"GroupName":"The Best Charter Here","OrganizationName":"Lake","SponsorName":"Randy White","SponsorPhone":"123-231-5544","SponsorEmail":"rwhite@test.com","MaxGroupSize":3,"Members":[]},{"GroupId":22,"GroupName":"Test","OrganizationName":"River","SponsorName":"Guide Name","SponsorPhone":"123-123-1231","SponsorEmail":"emailtest@test.com","MaxGroupSize":2,"Members":[]},{"GroupId":24,"GroupName":"Test","OrganizationName":"Deep Sea","SponsorName":"Test","SponsorPhone":"123-123-1231","SponsorEmail":"jon@test.com","MaxGroupSize":2,"Members":[]}]
+[
+    {
+        "GroupId": 3,
+        "GroupName": "Ice Fishing Adventures",
+        "OrganizationName": "Ice",
+        "SponsorName": "Zachary Westly",
+        "SponsorPhone": "555-000-0012",
+        "SponsorEmail": "zwest90@gmail.com",
+        "MaxGroupSize": 8,
+        "Members": [
+            {
+                "MemberId": 13,
+                "MemberEmail": "test@lkj.com",
+                "MemberName": "Another Test",
+                "MemberPhone": "123-123-1231"
+            },
+            {
+                "MemberId": 16,
+                "MemberEmail": "guy@test.com",
+                "MemberName": "Another Guy",
+                "MemberPhone": "123-123-1232"
+            },
+            {
+                "MemberId": 17,
+                "MemberEmail": "Test@Test.com",
+                "MemberName": "Still Working?",
+                "MemberPhone": "123-123-1222"
+            },
+            {
+                "MemberId": 18,
+                "MemberEmail": "test@lkj.com",
+                "MemberName": "My Name is",
+                "MemberPhone": "222-111-2121"
+            },
+            {
+                "MemberId": 19,
+                "MemberEmail": "jeff@test.com",
+                "MemberName": "Jeff",
+                "MemberPhone": "112-111-1111"
+            }
+        ]
+    },
+    {
+        "GroupId": 12,
+        "GroupName": "Fishing for Dummies",
+        "OrganizationName": "Lake",
+        "SponsorName": "Bob Vance",
+        "SponsorPhone": "123-123-1234",
+        "SponsorEmail": "testlkj@test.com",
+        "MaxGroupSize": 1,
+        "Members": [
+            {
+                "MemberId": 8,
+                "MemberEmail": "testing@test.com",
+                "MemberName": "Joe Vaughn",
+                "MemberPhone": "321-4321"
+            }
+        ]
+    },
+    {
+        "GroupId": 13,
+        "GroupName": "River Guiding Extreme 2",
+        "OrganizationName": "River",
+        "SponsorName": "Ron the Guide",
+        "SponsorPhone": "122-123-1221",
+        "SponsorEmail": "test@google.com",
+        "MaxGroupSize": 2,
+        "Members": [
+            {
+                "MemberId": 20,
+                "MemberEmail": "Test@lk",
+                "MemberName": "Test",
+                "MemberPhone": "123-123-1231"
+            }
+        ]
+    },
+    {
+        "GroupId": 14,
+        "GroupName": "Rushing Rapids",
+        "OrganizationName": "Inshore",
+        "SponsorName": "John Smith",
+        "SponsorPhone": "321-321-3211",
+        "SponsorEmail": "anothertest@test.com",
+        "MaxGroupSize": 3,
+        "Members": []
+    },
+    {
+        "GroupId": 18,
+        "GroupName": "Test Name",
+        "OrganizationName": "Small Creek",
+        "SponsorName": "Guide Name",
+        "SponsorPhone": "123-123-1231",
+        "SponsorEmail": "test@lkj",
+        "MaxGroupSize": 5,
+        "Members": []
+    },
+    {
+        "GroupId": 21,
+        "GroupName": "The Best Charter Here",
+        "OrganizationName": "Lake",
+        "SponsorName": "Randy White",
+        "SponsorPhone": "123-231-5544",
+        "SponsorEmail": "rwhite@test.com",
+        "MaxGroupSize": 3,
+        "Members": []
+    },
+    {
+        "GroupId": 22,
+        "GroupName": "Test",
+        "OrganizationName": "River",
+        "SponsorName": "Guide Name",
+        "SponsorPhone": "123-123-1231",
+        "SponsorEmail": "emailtest@test.com",
+        "MaxGroupSize": 2,
+        "Members": []
+    },
+    {
+        "GroupId": 24,
+        "GroupName": "Test",
+        "OrganizationName": "Deep Sea",
+        "SponsorName": "Test",
+        "SponsorPhone": "123-123-1231",
+        "SponsorEmail": "jon@test.com",
+        "MaxGroupSize": 2,
+        "Members": []
+    },
+    {
+        "GroupId": 25,
+        "GroupName": "I am a New Charter",
+        "OrganizationName": "Lake",
+        "SponsorName": "Bobby",
+        "SponsorPhone": "123-321-1231",
+        "SponsorEmail": "test@email.com",
+        "MaxGroupSize": 2,
+        "Members": []
+    }
+]

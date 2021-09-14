@@ -24,6 +24,8 @@ export class GroupService {
 
   constructor(private readonly http: HttpClient) { }
 
+  charters$: Observable<Charter[]> = this.http.get<Charter[]>(this.getAllGroupsUrl);
+
   getAllCharters<Charter>(): Observable<Charter[]> {
     return this.http.get<Charter[]>(this.getAllGroupsUrl);
   }

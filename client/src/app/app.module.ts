@@ -20,6 +20,7 @@ import { GroupDetailsComponent } from './group-details/group-details.component';
 import { MemberComponent } from './group-details/member/member.component';
 import { AddMemberComponent } from './add-member/add-member.component';
 import { PhonePipe } from './shared/phone.pipe';
+import { CharterSearchPipe } from './shared/charter-search.pipe';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { PhonePipe } from './shared/phone.pipe';
     GroupDetailsComponent,
     MemberComponent,
     AddMemberComponent,
-    PhonePipe
+    PhonePipe,
+    CharterSearchPipe
   ],
   imports: [
     AppRoutingModule,

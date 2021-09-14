@@ -1,31 +1,29 @@
-<app-loader *ngIf="isLoading"></app-loader>
 <app-add-charter *ngIf="showCharterModal"
                  (modalClose)="hideCharterModal()"></app-add-charter>
 <app-confirmation *ngIf="showDeleteModal"
                   [panelHeader]="deleteHeader"
                   [message]="deleteMessage"
                   (resolve)="resolveDelete($event)"></app-confirmation>
-<section class="top-container">
-  <h1>Charters <span>({{ filteredCharters?.length }})</span></h1>
-  <div class="org-filter">
-    <label class="form-label">Filter by Org</label>
-    <select id="orgFilter" name="orgName" (change)="filterByOrg($event.target.value)">
-      <option value="">All Charters</option>
-      <option *ngFor="let org of fishingOrgs" value="{{ org }}">{{ org }}</option>
-    </select>
-  </div>
-  <input type="text"
-         placeholder="Search"
-         (input)="searchCharters($event)"/>
-  <button (click)="addCharter()">+ Add a Charter</button>
-</section>
-<section class="charter-container">
-  <div *ngFor="let charter of filteredCharters; let i = index">
-    <app-group [group]="charter"
-               [charterNum]="i + 1"
-               (deleteCharter)="setDeleteModal($event)"></app-group>
-  </div>
-  <div *ngIf="filteredCharters?.length === 0" class="no-charters">
-    No Charters are available.
-  </div>
-</section>
+<div *ngIf="(charters$ | async | charterSearch: searchValue) as charters; else isLoading">
+  <section class="top-container">
+    <h1>Charters <span>({{ charters?.length }})</span></h1>
+    <input type="text"
+           placeholder="Search"
+           (input)="searchCharters($event)"/>
+    <button (click)="addCharter()">+ Add a Charter</button>
+  </section>
+  <section class="charter-container">
+    <div *ngFor="let charter of charters; let i = index">
+      <app-group [group]="charter"
+                 [charterNum]="i + 1"
+                 (deleteCharter)="setDeleteModal($event)"></app-group>
+    </div>
+    <div *ngIf="charters?.length === 0" class="no-charters">
+      No Charters are available.
+    </div>
+  </section>
+</div>
+
+<ng-template #isLoading>
+  <app-loader></app-loader>
+</ng-template>

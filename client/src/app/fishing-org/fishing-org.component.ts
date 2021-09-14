@@ -14,7 +14,6 @@ import { OrganizationService } from '../shared/organization.service';
 export class FishingOrgComponent implements OnInit {
   organizations$: Observable<FishingOrganization[]>;
 
-  orgs: FishingOrganization[];
   ngDestroyed$ = new Subject();
 
   constructor(private readonly organizationService: OrganizationService) { }
