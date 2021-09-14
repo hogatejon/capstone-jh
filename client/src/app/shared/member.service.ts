@@ -13,11 +13,15 @@ export class MemberService {
   constructor(private readonly http: HttpClient) { }
 
   deleteMemberFromGroup(groupId: string, memberId: string): Observable<Member> {
-    return this.http.delete<Member>(`${this.groupBaseUrl}/${groupId}/${memberId}`);
+    return this.http.delete<Member>(`${this.groupBaseUrl}/${groupId}/members/${memberId}`);
   }
 
   addMemberToGroup(groupId: string, member: Member): Observable<Member> {
     return this.http.post<Member>(`${this.groupBaseUrl}/${groupId}/members`, member);
+  }
+
+  editMemberInGroup(groupId: string, member: Member): Observable<Member> {
+    return this.http.put<Member>(`${this.groupBaseUrl}/${groupId}/members`, member)
   }
 
 }

@@ -14,6 +14,10 @@ ul > li {
   cursor: pointer;
 }
 
+li:hover > a {
+  text-decoration: underline;
+}
+
 li > a {
   color: white;
   text-decoration: none;

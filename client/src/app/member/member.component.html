@@ -1,3 +1,11 @@
+<app-add-member *ngIf="showMemberModal"
+                [addGroupId]="groupId"
+                [currentValue]="member"
+                (modalClose)="hideMemberModal()"></app-add-member>
+<app-confirmation *ngIf="showDeleteModal"
+                  [panelHeader]="deleteHeader"
+                  [message]="deleteMessage"
+                  (resolve)="resolveDelete($event)"></app-confirmation>
 <section class="panel">
   <div class="member-info">
     <h2>{{ member.MemberName }}</h2>
@@ -5,7 +13,7 @@
     <p>Phone: {{ member.MemberPhone }}</p>
   </div>
   <div class="buttons">
-    <button>Edit Member</button>
-    <button>Delete</button>
+    <button (click)="editMember()">Edit Member</button>
+    <button (click)="deleteMember()">Delete</button>
   </div>
 </section>

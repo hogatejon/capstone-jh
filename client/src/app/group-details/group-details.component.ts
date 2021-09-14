@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -14,15 +15,17 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
 
   ngDestroyed$ = new Subject();
   group: Charter;
+  groupId: string;
   showMemberModal: boolean = false;
   availMessage: string;
   isFull: boolean;
   showGroupModal: boolean = false;
 
-  constructor(private readonly groupService: GroupService) { }
+  constructor(private readonly groupService: GroupService,
+              private readonly route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.subscribeToSelectedGroup();
+    this.subscribeToRouteParams();
     this.setAvailability();
   }
 
@@ -36,12 +39,12 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
   }
 
   hideMemberModal() {
-    this.subscribeToMembers();
+    this.subscribeToGroupById(this.group.GroupId);
     this.showMemberModal = false;
   }
 
   hideGroupModal() {
-    this.subscribeToMembers();
+    this.subscribeToGroupById(this.group.GroupId);
     this.showGroupModal = false;
   }
 
@@ -50,8 +53,8 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
   }
 
   setAvailability() {
-    const max = this.group.MaxGroupSize;
-    const current = this.group.Members.length;
+    const max = this.group?.MaxGroupSize;
+    const current = this.group?.Members?.length;
 
     if (max > current) {
       this.isFull = false;
@@ -62,14 +65,18 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
     }
   }
 
-  private subscribeToSelectedGroup() {
-    this.groupService.selectedGroup.pipe(takeUntil(this.ngDestroyed$)).subscribe((group) => {
-      this.group = group;
-    })
+  reload() {
+    this.subscribeToGroupById(this.group.GroupId);
   }
 
-  private subscribeToMembers() {
-    this.groupService.getCharterById(this.group.GroupId).pipe(takeUntil(this.ngDestroyed$)).subscribe((group: Charter) => {
+  private subscribeToRouteParams() {
+    this.route.queryParams.pipe(takeUntil(this.ngDestroyed$)).subscribe((params: Params) => {
+      this.subscribeToGroupById(params.groupId);
+    });
+  }
+
+  private subscribeToGroupById(id: number) {
+    this.groupService.getCharterById(id).pipe(takeUntil(this.ngDestroyed$)).subscribe((group: Charter) => {
       this.group = group;
       this.setAvailability();
     });

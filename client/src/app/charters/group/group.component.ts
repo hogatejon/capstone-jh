@@ -44,7 +44,7 @@ export class GroupComponent implements OnInit {
 
   navToGroupDetails() {
     this.groupService.updateSelectedGroup(this.group);
-    this.router.navigate(['details'], { relativeTo: this.route });
+    this.router.navigate(['details'], { relativeTo: this.route, queryParams: { groupId: this.group.GroupId } });
   }
 
 }

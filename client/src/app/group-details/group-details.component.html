@@ -14,5 +14,7 @@
     </div>
   </header>
   <app-member *ngFor="let member of group?.Members"
-              [member]="member"></app-member>
+              [member]="member"
+              [groupId]="group.GroupId"
+              (reload)="reload()"></app-member>
 </section>
