@@ -1,21 +1,24 @@
-<app-loader *ngIf="isLoading"></app-loader>
 <app-add-member *ngIf="showMemberModal"
                 [addGroupId]="group?.GroupId"
                 (modalClose)="hideMemberModal()"></app-add-member>
 <app-add-charter *ngIf="showGroupModal"
                  [currentValue]="group"
                  (modalClose)="hideGroupModal()"></app-add-charter>
-<section>
+<section *ngIf="charter$ | async as charter">
   <header>
-    <h1>{{ group?.GroupName }}</h1>
-    <p [class.no-avail]="isFull">{{ availMessage }}</p>
+    <h1>{{ charter?.GroupName }}</h1>
+    <p [ngClass]="charter | spotsAvailable: true">{{ charter | spotsAvailable }}</p>
     <div>
       <button *ngIf="!isFull" (click)="addNewMember()">Add New Member</button>
       <button (click)="editGroup()">Edit Group</button>
     </div>
   </header>
-  <app-member *ngFor="let member of group?.Members"
+  <app-member *ngFor="let member of charter?.Members"
               [member]="member"
-              [groupId]="group.GroupId"
+              [groupId]="charter.GroupId"
               (reload)="reload()"></app-member>
 </section>
+
+<ng-template #isLoading>
+  <app-loader></app-loader>
+</ng-template>

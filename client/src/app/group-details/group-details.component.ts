@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { Charter } from '../models/Charter';
@@ -14,6 +14,7 @@ import { GroupService } from '../shared/group.service';
 export class GroupDetailsComponent implements OnInit, OnDestroy {
 
   ngDestroyed$ = new Subject();
+  charter$: Observable<Charter>;
   group: Charter;
   groupId: string;
   showMemberModal: boolean = false;
@@ -40,13 +41,13 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
   }
 
   hideMemberModal() {
-    this.subscribeToGroupById(this.group.GroupId);
     this.showMemberModal = false;
+    window.location.reload();
   }
 
   hideGroupModal() {
-    this.subscribeToGroupById(this.group.GroupId);
     this.showGroupModal = false;
+    this.reload();
   }
 
   editGroup() {
@@ -67,20 +68,20 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
   }
 
   reload() {
-    this.subscribeToGroupById(this.group.GroupId);
+    window.location.reload();
   }
 
   private subscribeToRouteParams() {
     this.route.queryParams.pipe(takeUntil(this.ngDestroyed$)).subscribe((params: Params) => {
-      this.subscribeToGroupById(params.groupId);
+      this.charter$ = this.groupService.getCharterById(params.groupId);
     });
   }
 
-  private subscribeToGroupById(id: number) {
-    this.groupService.getCharterById(id).pipe(takeUntil(this.ngDestroyed$)).subscribe((group: Charter) => {
-      this.group = group;
-      this.setAvailability();
-      this.isLoading = false;
-    });
-  }
+  // private subscribeToGroupById(id: number) {
+  //   this.groupService.getCharterById(id).pipe(takeUntil(this.ngDestroyed$)).subscribe((group: Charter) => {
+  //     this.group = group;
+  //     this.setAvailability();
+  //     this.isLoading = false;
+  //   });
+  // }
 }
