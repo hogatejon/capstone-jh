@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { Charter } from '../models/Charter';
 import { GroupService } from '../shared/group.service';
 
@@ -48,6 +49,11 @@ export class ChartersComponent implements OnInit, OnDestroy {
     this.showCharterModal = true;
   }
 
+  hideCharterModal() {
+    this.showCharterModal = false;
+    window.location.reload();
+  }
+
   setDeleteModal(group: Charter) {
     this.showDeleteModal = true;
     this.deleteMessage = `Are you sure you want to delete ${group.GroupName}?`
@@ -56,13 +62,11 @@ export class ChartersComponent implements OnInit, OnDestroy {
 
   resolveDelete(shouldDelete: boolean) {
     if (shouldDelete) {
-      alert('Deleted!')
+      this.groupService.deleteCharterById(this.groupIdDelete).pipe(takeUntil(this.ngDestroyed$)).subscribe();
+      alert('Deleted!');
+      window.location.reload();
     }
     this.showDeleteModal = false;
-  }
-
-  hideCharterModal() {
-    this.showCharterModal = false;
   }
 
 }
