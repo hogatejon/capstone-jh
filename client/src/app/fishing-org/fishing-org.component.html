@@ -1,7 +1,9 @@
-<app-loader *ngIf="isLoading"></app-loader>
 <h1>Home</h1>
-<div class="flex-container">
+<div class="flex-container" *ngIf="organizations$ | async as organizations; else isLoading">
   <section *ngFor="let org of organizations$ | async">
     <app-organization [org]="org"></app-organization>
   </section>
 </div>
+<ng-template #isLoading>
+  <app-loader></app-loader>
+</ng-template>

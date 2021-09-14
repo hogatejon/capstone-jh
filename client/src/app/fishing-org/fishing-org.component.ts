@@ -13,8 +13,6 @@ import { OrganizationService } from '../shared/organization.service';
   styleUrls: ['./fishing-org.component.scss']
 })
 export class FishingOrgComponent implements OnInit, OnDestroy {
-
-  isLoading: boolean = true;
   ngDestroyed$: Subject<boolean> = new Subject();
   organizations$: Observable<FishingOrganization[]>;
 
@@ -30,6 +28,5 @@ export class FishingOrgComponent implements OnInit, OnDestroy {
 
   getOrganizationsAsyncPipe() {
     this.organizations$ = this.organizationService.organizations$;
-    this.isLoading = false;
   }
 }
