@@ -19,7 +19,6 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
   groupId: string;
   showMemberModal: boolean = false;
   availMessage: string;
-  isFull: boolean;
   showGroupModal: boolean = false;
   isLoading: boolean = true;
 
@@ -28,7 +27,6 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscribeToRouteParams();
-    this.setAvailability();
   }
 
   ngOnDestroy() {
@@ -54,16 +52,12 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
     this.showGroupModal = true;
   }
 
-  setAvailability() {
-    const max = this.group?.MaxGroupSize;
-    const current = this.group?.Members?.length;
-
-    if (max > current) {
-      this.isFull = false;
-      this.availMessage = `${current}/${max} Spots Available`;
+  isFull() {
+    console.log(document.querySelector('header > p').classList.contains('no-avail'));
+    if (document.querySelector('header > p').classList.contains('no-avail')) {
+      return true;
     } else {
-      this.isFull = true;
-      this.availMessage = `${current}/${max} No Spots Available`
+      return false;
     }
   }
 
