@@ -26,7 +26,6 @@ export class AddCharterComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.buildCharterForm();
     if (this.currentValue) {
-      console.log(this.currentValue);
       this.charterForm.patchValue(this.currentValue);
     }
   }

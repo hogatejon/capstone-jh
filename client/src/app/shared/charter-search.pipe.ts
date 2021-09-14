@@ -18,7 +18,6 @@ export class CharterSearchPipe implements PipeTransform {
              charter.SponsorPhone.indexOf(searchText) !== -1 ||
              charter.SponsorEmail.toLowerCase().indexOf(searchText) !== -1;
     });
-    console.log(filteredCharters);
     return filteredCharters;
   }
 }

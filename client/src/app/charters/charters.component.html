@@ -9,6 +9,7 @@
     <h1>Charters <span>({{ charters?.length }})</span></h1>
     <input type="text"
            placeholder="Search"
+           [value]="searchValue"
            (input)="searchCharters($event)"/>
     <button (click)="addCharter()">+ Add a Charter</button>
   </section>

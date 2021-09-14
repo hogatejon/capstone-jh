@@ -1,7 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 import { Charter } from '../models/Charter';
 import { GroupService } from '../shared/group.service';
 
@@ -30,6 +28,11 @@ export class ChartersComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.charters$ = this.groupService.charters$;
+    this.groupService.filterOrg.subscribe(group => {
+      if (group) {
+        this.searchValue = group
+      }
+    });
   }
 
   ngOnDestroy() {
