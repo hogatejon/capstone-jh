@@ -15,9 +15,20 @@ const routes: Routes = [
   {
     path: '',
     children: [
-      { path: 'home', component: FishingOrgComponent },
+      {
+        path: 'home',
+        component: FishingOrgComponent,
+        data: {
+          breadcrumb: 'Home'
+        }
+      },
       ...charterRoutes,
-      { path: 'about', component: AboutComponent },
+      { path: 'about',
+        component: AboutComponent,
+        data: {
+          breadcrumb: 'About'
+        }
+    },
       fallbackRoute
     ]
   }

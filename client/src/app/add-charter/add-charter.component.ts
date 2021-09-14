@@ -47,21 +47,26 @@ export class AddCharterComponent implements OnInit, OnDestroy {
       'SponsorEmail': [null, Validators.compose([Validators.email, Validators.required])],
       'OrganizationName': [null, Validators.required],
       'MaxGroupSize': [null, Validators.required]
-    });
+    }, { updateOn: 'blur'});
   }
 
   onSubmit() {
     this.submit = true;
-    if (this.charterForm.valid && !this.currentValue) {
-      this.groupService.addCharter(this.charterForm.getRawValue()).pipe(takeUntil(this.ngDestroyed$)).subscribe(() => {
-        this.exitModal();
-      });
+    if (this.charterForm.valid) {
+      if (!this.currentValue) {
+        this.groupService.addCharter(this.charterForm.getRawValue()).pipe(takeUntil(this.ngDestroyed$)).subscribe(() => {
+          this.exitModal();
+        });
+      } else {
+        const appendId = this.charterForm.getRawValue();
+        appendId.GroupId = this.currentValue.GroupId;
+        this.groupService.editGroup(appendId).pipe(takeUntil(this.ngDestroyed$)).subscribe(() => {
+          this.exitModal();
+        });
+      }
     } else {
-      const appendId = this.charterForm.getRawValue();
-      appendId.GroupId = this.currentValue.GroupId;
-      this.groupService.editGroup(appendId).pipe(takeUntil(this.ngDestroyed$)).subscribe(() => {
-        this.exitModal();
-      });
+      this.charterForm.markAllAsTouched();
+      this.charterForm.markAsDirty();
     }
   }
 

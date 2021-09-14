@@ -7,11 +7,17 @@ export const charterRoutes = [
     children: [
       {
         path: '',
-        component: ChartersComponent
+        component: ChartersComponent,
+        data: {
+          breadcrumb: 'Charters'
+        }
       },
       {
         path: 'details',
-        component: GroupDetailsComponent
+        component: GroupDetailsComponent,
+        data: {
+          breadcrumb: 'Charter Details'
+        }
       }
     ]
   }

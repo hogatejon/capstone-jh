@@ -19,7 +19,7 @@ export class OrganizationService {
   organizations$: Observable<FishingOrganization[]> = this.http.get<FishingOrganization[]>(this.orgUrl).pipe(
     catchError(err => {
       this.errorMessage = err;
-      return EMPTY
+      return EMPTY;
     })
   );
 }
