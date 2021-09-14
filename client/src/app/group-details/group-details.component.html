@@ -8,7 +8,7 @@
 <section>
   <header>
     <h1>{{ group?.GroupName }}</h1>
-    <p>{{ availMessage }}</p>
+    <p [class.no-avail]="isFull">{{ availMessage }}</p>
     <div>
       <button *ngIf="!isFull" (click)="addNewMember()">Add New Member</button>
       <button (click)="editGroup()">Edit Group</button>

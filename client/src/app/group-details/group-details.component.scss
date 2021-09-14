@@ -4,6 +4,14 @@ header {
   align-items: center;
 }
 
+p {
+  color: #869d7a;
+}
+
+.no-avail {
+  color: #E66360 !important;
+}
+
 div > button:last-of-type {
   margin-left: 1rem;
 }
