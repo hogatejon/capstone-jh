@@ -5,7 +5,7 @@ import { takeUntil } from 'rxjs/operators';
 
 import { FishingOrganization } from '../models/FishingOrganization';
 import { GroupService } from '../shared/group.service';
-import { OrganizationService } from './organization.service';
+import { OrganizationService } from '../shared/organization.service';
 
 @Component({
   selector: 'app-fishing-org',

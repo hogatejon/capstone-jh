@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { Member } from '../models/Member';
-import { MemberService } from '../shared/member.service';
+import { Member } from '../../models/Member';
+import { MemberService } from '../../shared/member.service';
 
 @Component({
   selector: 'app-member',

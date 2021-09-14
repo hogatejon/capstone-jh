@@ -17,7 +17,7 @@ import { AboutComponent } from './about/about.component';
 import { ConfirmationComponent } from './shared/confirmation/confirmation.component';
 import { MessageComponent } from './shared/message/message.component';
 import { GroupDetailsComponent } from './group-details/group-details.component';
-import { MemberComponent } from './member/member.component';
+import { MemberComponent } from './group-details/member/member.component';
 import { AddMemberComponent } from './add-member/add-member.component';
 
 @NgModule({

@@ -48,7 +48,7 @@ export class ChartersComponent implements OnInit, OnDestroy {
 
   resolveDelete(shouldDelete: boolean) {
     if (shouldDelete) {
-      console.log('should delete');
+      alert('Charter Deleted!')
       this.groupService.deleteCharterById(this.groupIdDelete).pipe(takeUntil(this.ngDestroyed$)).subscribe(
         () => this.subscribeToAllGroups()
         //TODO: Add Error Handling
@@ -74,7 +74,6 @@ export class ChartersComponent implements OnInit, OnDestroy {
   }
 
   searchCharters(event) {
-
     if (event.target.value) {
       const searchText = event.target.value.toLowerCase();
       this.filteredCharters = this.charters.filter(charter => {
@@ -84,7 +83,6 @@ export class ChartersComponent implements OnInit, OnDestroy {
                charter.SponsorPhone.indexOf(searchText) !== -1 ||
                charter.SponsorEmail.toLowerCase().indexOf(searchText) !== -1;
       });
-      console.log(this.filteredCharters);
     } else {
       this.filteredCharters = this.charters
     }
