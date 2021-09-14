@@ -1,6 +1,6 @@
 <h1>Home</h1>
 <div class="flex-container" *ngIf="organizations$ | async as organizations; else isLoading">
-  <section *ngFor="let org of organizations$ | async">
+  <section *ngFor="let org of organizations">
     <app-organization [org]="org"></app-organization>
   </section>
 </div>
