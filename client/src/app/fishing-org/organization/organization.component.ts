@@ -27,7 +27,7 @@ export class OrganizationComponent implements OnInit {
   setFishingImages(org: FishingOrganization) {
     switch (org.OrganizationId) {
       case '1':
-        org.imageUrl = 'assets/deepSea.jpg';
+        org.imageUrl = 'assets/DeepSea.jpg';
         break;
       case '2':
         org.imageUrl = 'assets/river.jpg';
