@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Member } from '../models/Member';
-import { MemberService } from '../shared/member.service';
+import { MemberService } from '../shared/services/member.service';
 
 @Component({
   selector: 'app-add-member',
@@ -13,11 +13,13 @@ import { MemberService } from '../shared/member.service';
 export class AddMemberComponent implements OnInit, OnDestroy {
 
   @Input() addGroupId: string;
+  @Input() isEdit?: boolean;
   @Input() currentValue?: Member;
   @Output() modalClose = new EventEmitter<boolean>();
   memberForm: FormGroup;
   ngDestroyed$: Subject<boolean> = new Subject();
   submit: boolean = false;
+  action: string = 'Add';
 
   constructor(private readonly fb: FormBuilder,
               private readonly memberService: MemberService) { }
@@ -26,6 +28,9 @@ export class AddMemberComponent implements OnInit, OnDestroy {
     this.buildMemberForm();
     if (this.currentValue) {
       this.populateForm();
+    }
+    if (this.isEdit) {
+      this.action = 'Edit';
     }
   }
 

@@ -72,3 +72,10 @@ form {
   align-content: center;
   justify-content: space-evenly;
 }
+
+@media (max-width: 481px) {
+  .panel {
+    width: 85vw;
+    height: fit-content;
+  }
+}

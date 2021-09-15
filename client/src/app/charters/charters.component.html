@@ -8,11 +8,14 @@
   <section class="top-container">
     <h1>Charters <span>({{ charters?.length }})</span></h1>
     <div>
-      <label class="form-label">Search:</label>
+      <label>Search:</label>
       <input type="search"
              placeholder="Search Charters"
              [value]="searchValue"
              (input)="searchCharters($event)"/>
+      <label *ngIf="searchValue !== ''">
+        Showing Results for: <em>{{ searchValue }}</em>
+      </label>
     </div>
     <button (click)="addCharter()">+ Add a Charter</button>
   </section>

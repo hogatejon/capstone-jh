@@ -2,9 +2,20 @@ div {
   border: 2px solid gray;
   border-radius: 1rem;
   padding: 1rem;
+  margin: 1rem;
   background-color: white;
   overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-flow: column nowrap;
+  height: calc(100% - 3.5rem);
   box-shadow: 0 3px 6px rgb(0 0 0 / 30%);
+  transition: all 0.4s ease 0s;
+}
+
+div:hover {
+  transform: scale(1.05);
+  transition: all 0.4s ease 0s;
 }
 
 button {
@@ -12,9 +23,25 @@ button {
   border-radius: 0.25rem;
   height: 2rem;
   color: white;
+  margin-top: auto;
 }
 
 img {
   max-width: calc(100% + 2rem);
-  margin: -1rem 0 0 -1rem;
+  margin: -1rem -1rem 0 -1rem;
+}
+
+@media (max-width: 480px) {
+  div {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  h2, p {
+    margin: .5rem 0
+  }
+
+  img {
+    flex: 2 1 100%;
+  };
 }

@@ -1,6 +1,7 @@
 <app-add-member *ngIf="showMemberModal"
                 [addGroupId]="groupId"
                 [currentValue]="member"
+                [isEdit]="edit"
                 (modalClose)="hideMemberModal()"></app-add-member>
 <app-confirmation *ngIf="showDeleteModal"
                   [panelHeader]="deleteHeader"

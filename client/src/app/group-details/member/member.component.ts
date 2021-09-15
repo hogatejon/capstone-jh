@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angu
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Member } from '../../models/Member';
-import { MemberService } from '../../shared/member.service';
+import { MemberService } from '../../shared/services/member.service';
 
 @Component({
   selector: 'app-member',
@@ -19,6 +19,7 @@ export class MemberComponent implements OnInit, OnDestroy {
   deleteHeader: string = 'Delete Member';
   deleteMessage: string;
   ngDestroyed$ = new Subject();
+  edit: boolean = false;
 
 
   constructor(private readonly memberService: MemberService) { }
@@ -31,11 +32,13 @@ export class MemberComponent implements OnInit, OnDestroy {
   }
 
   editMember() {
+    this.edit = true;
     this.showMemberModal = true;
   }
 
   hideMemberModal() {
     this.showMemberModal = false;
+    this.edit = false;
     this.reload.emit(true);
   }
 

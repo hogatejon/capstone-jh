@@ -4,13 +4,14 @@
                 (modalClose)="hideMemberModal()"></app-add-member>
   <app-add-charter *ngIf="showGroupModal"
                    [currentValue]="charter"
+                   [isEdit]="edit"
                    (modalClose)="hideGroupModal()"></app-add-charter>
   <header>
     <h1>{{ charter?.GroupName }} &#8212; {{ charter.OrganizationName }}</h1>
     <p [ngClass]="charter | spotsAvailable: true">{{ charter | spotsAvailable }}</p>
     <div>
       <button *ngIf="!isFull()" (click)="addNewMember()">Add New Member</button>
-      <button (click)="editGroup()">Edit Group</button>
+      <button (click)="editCharter()">Edit Charter</button>
     </div>
   </header>
   <h2>Member List:</h2>

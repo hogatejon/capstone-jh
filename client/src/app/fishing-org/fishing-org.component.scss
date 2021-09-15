@@ -1,19 +1,16 @@
 .flex-container {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  flex: 1 1 33%;
+  flex-flow: row wrap;
   justify-content: space-between;
   align-items: stretch;
 }
 
-h1 {
-  padding-left: 1rem;
+section {
+  width: 33%;
 }
 
-section {
-  max-width: 25%;
-  margin: 1rem;
+h1 {
+  padding-left: 1rem;
 }
 
 @media (min-width: 481px) and  (max-width: 768px) {
@@ -25,6 +22,10 @@ section {
 }
 
 @media (max-width: 480px) {
+  h1 {
+    margin: 0;
+  }
+
   section {
     width: 100%;
     max-width: initial;

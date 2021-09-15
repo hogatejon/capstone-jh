@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Charter } from 'src/app/models/Charter';
-import { GroupService } from 'src/app/shared/group.service';
+import { GroupService } from 'src/app/shared/services/group.service';
 
 @Component({
   selector: 'app-group',

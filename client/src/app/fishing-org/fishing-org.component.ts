@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
 import { FishingOrganization } from '../models/FishingOrganization';
-import { OrganizationService } from '../shared/organization.service';
+import { OrganizationService } from '../shared/services/organization.service';
 
 @Component({
   selector: 'app-fishing-org',

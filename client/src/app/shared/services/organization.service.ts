@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
-import { FishingOrganization } from '../models/FishingOrganization';
-import { catchError } from 'rxjs/operators';
+import { FishingOrganization } from '../../models/FishingOrganization';
 
 @Injectable({
   providedIn: 'root'

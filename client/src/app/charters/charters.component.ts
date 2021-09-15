@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Charter } from '../models/Charter';
-import { GroupService } from '../shared/group.service';
+import { GroupService } from '../shared/services/group.service';
 
 @Component({
   selector: 'app-charters',
@@ -24,6 +24,7 @@ export class ChartersComponent implements OnInit, OnDestroy {
   groupIdDelete: number;
   noChartersInSearch: boolean = false;
   searchValue: string = '';
+  edit: boolean;
 
   constructor(private readonly groupService: GroupService) { }
 
@@ -63,7 +64,6 @@ export class ChartersComponent implements OnInit, OnDestroy {
   resolveDelete(shouldDelete: boolean) {
     if (shouldDelete) {
       this.groupService.deleteCharterById(this.groupIdDelete).pipe(takeUntil(this.ngDestroyed$)).subscribe();
-      alert('Deleted!');
       window.location.reload();
     }
     this.showDeleteModal = false;

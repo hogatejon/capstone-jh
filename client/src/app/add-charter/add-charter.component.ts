@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Charter } from '../models/Charter';
-import { GroupService } from '../shared/group.service';
+import { GroupService } from '../shared/services/group.service';
 
 @Component({
   selector: 'app-add-charter',
@@ -13,12 +13,14 @@ import { GroupService } from '../shared/group.service';
 export class AddCharterComponent implements OnInit, OnDestroy {
 
   @Input() currentValue?: Charter
+  @Input() isEdit?: boolean;
   @Output() modalClose = new EventEmitter<boolean>();
 
   charterForm: FormGroup
   fishingOrgs = ['Deep Sea', 'River', 'Lake', 'Small Creek', 'Ice', 'Inshore'];
   ngDestroyed$: Subject<boolean> = new Subject();
   submit: boolean = false;
+  action: string = 'Add';
 
   constructor(private readonly fb: FormBuilder,
               private readonly groupService: GroupService) { }
@@ -27,6 +29,9 @@ export class AddCharterComponent implements OnInit, OnDestroy {
     this.buildCharterForm();
     if (this.currentValue) {
       this.charterForm.patchValue(this.currentValue);
+    }
+    if (this.isEdit) {
+      this.action = 'Edit';
     }
   }
 

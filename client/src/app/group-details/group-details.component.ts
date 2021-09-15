@@ -4,7 +4,7 @@ import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { Charter } from '../models/Charter';
-import { GroupService } from '../shared/group.service';
+import { GroupService } from '../shared/services/group.service';
 
 @Component({
   selector: 'app-group-details',
@@ -18,6 +18,7 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
   showMemberModal: boolean = false;
   showGroupModal: boolean = false;
   availMessage: string;
+  edit: boolean = false;
 
   constructor(private readonly groupService: GroupService,
               private readonly route: ActivatedRoute) { }
@@ -45,7 +46,8 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
     this.reload();
   }
 
-  editGroup() {
+  editCharter() {
+    this.edit = true;
     this.showGroupModal = true;
   }
 

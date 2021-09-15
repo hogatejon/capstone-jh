@@ -47,3 +47,32 @@ section.content {
 .no-avail {
   color: #E66360 !important;
 }
+
+@media (max-width: 481px) {
+  .button-group {
+    flex: 1 1 100%;
+    flex-wrap: wrap;
+
+    button {
+      width: 100%;
+    }
+  }
+
+  .register-button {
+    margin-right: initial;
+    margin-bottom: 0.5rem;
+  }
+
+  .delete-button {
+    margin-left: initial;
+    margin-top: 0.5rem;
+  }
+
+  header {
+    flex-direction: column;
+  }
+
+  header > p:last-of-type {
+    margin-top: 0;
+  }
+}

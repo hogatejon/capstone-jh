@@ -51,3 +51,10 @@
   color: white;
   margin-left: 1rem;
 }
+
+@media (max-width: 481px) {
+  .panel {
+    width: 85vw;
+    height: fit-content;
+  }
+}

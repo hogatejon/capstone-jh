@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Charter } from '../models/Charter';
+import { Charter } from '../../models/Charter';
 
 @Pipe({
   name: 'charterSearch'

@@ -18,7 +18,7 @@
 
 .panel {
   width: 50vw;
-  height: fit-content;
+  height: 75vh;
   background-color: white;
   border: 1px solid gray;
   border-radius: .75rem;
@@ -70,4 +70,11 @@ form {
   flex-direction: column;
   align-content: center;
   justify-content: space-evenly;
+}
+
+@media (max-width: 481px) {
+  .panel {
+    width: 85vw;
+    height: fit-content;
+  }
 }

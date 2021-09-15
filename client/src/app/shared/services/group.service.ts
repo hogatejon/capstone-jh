@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
-import { Charter } from '../models/Charter';
+import { Charter } from '../../models/Charter';
 
 @Injectable({
   providedIn: 'root'

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OrganizationService } from './shared/organization.service';
+import { OrganizationService } from './shared/services/organization.service';
 
 @Component({
   selector: 'app-root',
