@@ -17,8 +17,8 @@
 }
 
 .panel {
-  width: 50vw;
-  height: fit-content;
+  width: 70vw;
+  height: 70vh;
   background-color: white;
   border: 1px solid gray;
   border-radius: .75rem;
@@ -54,6 +54,7 @@ form > input:last-of-type {
 
 .input-error {
   background-color: rgba(230, 99, 96, 0.2);
+  border: 3px solid #cc2d24;
 }
 
 input {

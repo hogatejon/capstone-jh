@@ -15,12 +15,9 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
 
   ngDestroyed$ = new Subject();
   charter$: Observable<Charter>;
-  group: Charter;
-  groupId: string;
   showMemberModal: boolean = false;
-  availMessage: string;
   showGroupModal: boolean = false;
-  isLoading: boolean = true;
+  availMessage: string;
 
   constructor(private readonly groupService: GroupService,
               private readonly route: ActivatedRoute) { }
@@ -53,7 +50,6 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
   }
 
   isFull() {
-    console.log(document.querySelector('header > p').classList.contains('no-avail'));
     if (document.querySelector('header > p').classList.contains('no-avail')) {
       return true;
     } else {
@@ -70,12 +66,4 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
       this.charter$ = this.groupService.getCharterById(params.groupId);
     });
   }
-
-  // private subscribeToGroupById(id: number) {
-  //   this.groupService.getCharterById(id).pipe(takeUntil(this.ngDestroyed$)).subscribe((group: Charter) => {
-  //     this.group = group;
-  //     this.setAvailability();
-  //     this.isLoading = false;
-  //   });
-  // }
 }

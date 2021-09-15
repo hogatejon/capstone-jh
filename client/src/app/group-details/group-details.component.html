@@ -1,22 +1,28 @@
-<app-add-member *ngIf="showMemberModal"
-                [addGroupId]="group?.GroupId"
+<section *ngIf="charter$ | async as charter; else isLoading">
+  <app-add-member *ngIf="showMemberModal"
+                [addGroupId]="charter?.GroupId"
                 (modalClose)="hideMemberModal()"></app-add-member>
-<app-add-charter *ngIf="showGroupModal"
-                 [currentValue]="group"
-                 (modalClose)="hideGroupModal()"></app-add-charter>
-<section *ngIf="charter$ | async as charter">
+  <app-add-charter *ngIf="showGroupModal"
+                   [currentValue]="charter"
+                   (modalClose)="hideGroupModal()"></app-add-charter>
   <header>
-    <h1>{{ charter?.GroupName }}</h1>
+    <h1>{{ charter?.GroupName }} &#8212; {{ charter.OrganizationName }}</h1>
     <p [ngClass]="charter | spotsAvailable: true">{{ charter | spotsAvailable }}</p>
     <div>
       <button *ngIf="!isFull()" (click)="addNewMember()">Add New Member</button>
       <button (click)="editGroup()">Edit Group</button>
     </div>
   </header>
+  <h2>Member List:</h2>
+  <div class="member-message">
+    <h3 *ngIf="charter?.Members?.length === 0" class="no-members">
+      There are no Members, please add some!
+    </h3>
+  </div>
   <app-member *ngFor="let member of charter?.Members"
-              [member]="member"
-              [groupId]="charter.GroupId"
-              (reload)="reload()"></app-member>
+            [member]="member"
+            [groupId]="charter.GroupId"
+            (reload)="reload()"></app-member>
 </section>
 
 <ng-template #isLoading>

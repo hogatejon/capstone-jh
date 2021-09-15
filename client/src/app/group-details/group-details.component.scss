@@ -7,6 +7,7 @@ header {
 
 p {
   color: #869d7a;
+  font-weight: bold;
 }
 
 .no-avail {
@@ -15,4 +16,27 @@ p {
 
 div > button:last-of-type {
   margin-left: 1rem;
+}
+
+section {
+  height: 100%;
+}
+
+.no-members {
+  border: 2px solid gray;
+  padding: 1rem;
+  border-radius: .25rem;
+}
+
+.member-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.member-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: stretch;
 }

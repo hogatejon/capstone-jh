@@ -1,19 +1,18 @@
-import { Component } from '@angular/core';
-import { MessageService } from './shared/message/message.service';
+import { Component, OnInit } from '@angular/core';
+import { OrganizationService } from './shared/organization.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-  title = 'fly-shop';
-  showMessage: boolean = false;
+  constructor(private readonly organizationService: OrganizationService) { }
 
-  constructor(private readonly messageService: MessageService) { }
-
-
+  ngOnInit() {
+    this.organizationService.getOrganizations();
+  }
 }
 
 

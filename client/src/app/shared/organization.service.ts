@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { EMPTY, Observable } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 import { FishingOrganization } from '../models/FishingOrganization';
 import { catchError } from 'rxjs/operators';
@@ -13,13 +13,13 @@ export class OrganizationService {
 
   private orgUrl: string = 'http://localhost:8082/api/organizations';
   errorMessage: string;
+  organizations$: BehaviorSubject<FishingOrganization[]> = new BehaviorSubject<FishingOrganization[]>(null);
 
   constructor(private readonly http: HttpClient) { }
 
-  organizations$: Observable<FishingOrganization[]> = this.http.get<FishingOrganization[]>(this.orgUrl).pipe(
-    catchError(err => {
-      this.errorMessage = err;
-      return EMPTY;
-    })
-  );
+  getOrganizations() {
+    this.http.get<FishingOrganization[]>(this.orgUrl).subscribe((orgs) => {
+      this.organizations$.next(orgs);
+    });
+  }
 }

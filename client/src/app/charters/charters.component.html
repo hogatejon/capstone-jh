@@ -7,10 +7,13 @@
 <div *ngIf="(charters$ | async | charterSearch: searchValue) as charters; else isLoading">
   <section class="top-container">
     <h1>Charters <span>({{ charters?.length }})</span></h1>
-    <input type="text"
-           placeholder="Search"
-           [value]="searchValue"
-           (input)="searchCharters($event)"/>
+    <div>
+      <label class="form-label">Search:</label>
+      <input type="search"
+             placeholder="Search Charters"
+             [value]="searchValue"
+             (input)="searchCharters($event)"/>
+    </div>
     <button (click)="addCharter()">+ Add a Charter</button>
   </section>
   <section class="charter-container">

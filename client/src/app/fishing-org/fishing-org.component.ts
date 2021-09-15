@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Observable, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 
 import { FishingOrganization } from '../models/FishingOrganization';
 import { OrganizationService } from '../shared/organization.service';

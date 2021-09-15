@@ -54,6 +54,7 @@ export class GroupComponent implements OnInit {
 
   hideMemberModal() {
     this.showMemberModal = false;
+    window.location.reload();
   }
 
 }
