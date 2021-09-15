@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Member } from '../models/Member';
+import { MessageService } from '../shared/components/message/message.service';
 import { MemberService } from '../shared/services/member.service';
 
 @Component({
@@ -22,7 +23,8 @@ export class AddMemberComponent implements OnInit, OnDestroy {
   action: string = 'Add';
 
   constructor(private readonly fb: FormBuilder,
-              private readonly memberService: MemberService) { }
+              private readonly memberService: MemberService,
+              private readonly messageService: MessageService) { }
 
   ngOnInit(): void {
     this.buildMemberForm();
@@ -58,14 +60,20 @@ export class AddMemberComponent implements OnInit, OnDestroy {
     this.submit = true;
     if (this.memberForm.valid && !this.currentValue) {
       this.memberService.addMemberToGroup(this.addGroupId, this.memberForm.getRawValue()).pipe(takeUntil(this.ngDestroyed$)).subscribe(
-        () => this.exitModal()
+        () => {
+          this.messageService.showMessage('Member Added!', `You successfully added a member!`, 'success');
+          this.exitModal()
         //TODO: Add error Handling
+        }
       );
     } else {
       const addId = this.memberForm.getRawValue();
       addId.MemberId = this.currentValue.MemberId;
       this.memberService.editMemberInGroup(this.addGroupId, addId).pipe(takeUntil(this.ngDestroyed$)).subscribe(
-        () => this.exitModal()
+        () => {
+          this.messageService.showMessage('Member Edited!', `You successfully edited an existing member!`, 'success');
+          this.exitModal();
+        }
       );
     }
   }

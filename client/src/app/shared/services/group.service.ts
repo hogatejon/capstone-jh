@@ -24,10 +24,12 @@ export class GroupService {
 
   constructor(private readonly http: HttpClient) { }
 
-  charters$: Observable<Charter[]> = this.http.get<Charter[]>(this.getAllGroupsUrl);
+  charters$: BehaviorSubject<Charter[]> = new BehaviorSubject<Charter[]>(null);
 
-  getAllCharters<Charter>(): Observable<Charter[]> {
-    return this.http.get<Charter[]>(this.getAllGroupsUrl);
+  getAllCharters() {
+    this.http.get<Charter[]>(this.getAllGroupsUrl).subscribe((charters) => {
+      this.charters$.next(charters);
+    });
   }
 
   getChartersByOrg<Charter>(orgId: string): Observable<Charter[]> {

@@ -8,7 +8,7 @@ export class PhonePipe implements PipeTransform {
   transform(value: string): string {
     const strippedNumbers = value.replace(/\D/g, '');
 
-    return `(${strippedNumbers.substr(0, 3)})${strippedNumbers.substr(3, 3)}-${strippedNumbers.substr(6)}`
+    return `(${strippedNumbers.substr(0, 3)}) ${strippedNumbers.substr(3, 3)}-${strippedNumbers.substr(6)}`
   }
 
 }

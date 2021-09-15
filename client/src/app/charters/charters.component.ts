@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Charter } from '../models/Charter';
+import { MessageService } from '../shared/components/message/message.service';
 import { GroupService } from '../shared/services/group.service';
 
 @Component({
@@ -26,9 +27,11 @@ export class ChartersComponent implements OnInit, OnDestroy {
   searchValue: string = '';
   edit: boolean;
 
-  constructor(private readonly groupService: GroupService) { }
+  constructor(private readonly groupService: GroupService,
+              private readonly messageService: MessageService) { }
 
   ngOnInit(): void {
+    this.groupService.getAllCharters();
     this.charters$ = this.groupService.charters$;
     this.groupService.filterOrg.subscribe(group => {
       if (group) {
@@ -52,7 +55,6 @@ export class ChartersComponent implements OnInit, OnDestroy {
 
   hideCharterModal() {
     this.showCharterModal = false;
-    window.location.reload();
   }
 
   setDeleteModal(group: Charter) {
@@ -63,8 +65,9 @@ export class ChartersComponent implements OnInit, OnDestroy {
 
   resolveDelete(shouldDelete: boolean) {
     if (shouldDelete) {
-      this.groupService.deleteCharterById(this.groupIdDelete).pipe(takeUntil(this.ngDestroyed$)).subscribe();
-      window.location.reload();
+      this.groupService.deleteCharterById(this.groupIdDelete).pipe(takeUntil(this.ngDestroyed$)).subscribe(
+        () => { this.messageService.showMessage('Charter Deleted', 'You have successfully deleted a charter', 'success'); }
+      );
     }
     this.showDeleteModal = false;
   }

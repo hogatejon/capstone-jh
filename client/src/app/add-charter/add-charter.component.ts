@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Charter } from '../models/Charter';
+import { MessageService } from '../shared/components/message/message.service';
 import { GroupService } from '../shared/services/group.service';
 
 @Component({
@@ -23,7 +24,8 @@ export class AddCharterComponent implements OnInit, OnDestroy {
   action: string = 'Add';
 
   constructor(private readonly fb: FormBuilder,
-              private readonly groupService: GroupService) { }
+              private readonly groupService: GroupService,
+              private readonly messageService: MessageService) { }
 
   ngOnInit(): void {
     this.buildCharterForm();
@@ -59,12 +61,15 @@ export class AddCharterComponent implements OnInit, OnDestroy {
     if (this.charterForm.valid) {
       if (!this.currentValue) {
         this.groupService.addCharter(this.charterForm.getRawValue()).pipe(takeUntil(this.ngDestroyed$)).subscribe(() => {
+          this.groupService.getAllCharters();
+          this.messageService.showMessage('Group Added!', 'You have successfully added a group', 'success');
           this.exitModal();
         });
       } else {
         const appendId = this.charterForm.getRawValue();
         appendId.GroupId = this.currentValue.GroupId;
         this.groupService.editGroup(appendId).pipe(takeUntil(this.ngDestroyed$)).subscribe(() => {
+          this.messageService.showMessage('Group Edited!', 'You have successfully edited a group', 'success');
           this.exitModal();
         });
       }

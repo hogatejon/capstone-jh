@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
@@ -22,6 +23,8 @@ import { AddMemberComponent } from './add-member/add-member.component';
 import { PhonePipe } from './shared/pipes/phone.pipe';
 import { CharterSearchPipe } from './shared/pipes/charter-search.pipe';
 import { SpotsAvailablePipe } from './shared/pipes/spots-available.pipe';
+import { OrgFilterPipe } from './shared/org-filter.pipe';
+
 
 @NgModule({
   declarations: [
@@ -42,11 +45,13 @@ import { SpotsAvailablePipe } from './shared/pipes/spots-available.pipe';
     AddMemberComponent,
     PhonePipe,
     CharterSearchPipe,
-    SpotsAvailablePipe
+    SpotsAvailablePipe,
+    OrgFilterPipe
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule

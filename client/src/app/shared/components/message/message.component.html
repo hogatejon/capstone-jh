@@ -1,8 +1,9 @@
 <section>
   <header>
-    {{ header }}
+    <p>{{ message?.header }}</p>
+    <button (click)="onClose()">X</button>
   </header>
   <div>
-    {{ message }}
+    {{ message?.message }}
   </div>
 </section>

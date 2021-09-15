@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Charter } from 'src/app/models/Charter';
+import { MessageService } from 'src/app/shared/components/message/message.service';
 import { GroupService } from 'src/app/shared/services/group.service';
 
 @Component({
@@ -54,7 +55,7 @@ export class GroupComponent implements OnInit {
 
   hideMemberModal() {
     this.showMemberModal = false;
-    window.location.reload();
+    this.groupService.getAllCharters();
   }
 
 }

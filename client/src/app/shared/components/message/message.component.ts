@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Message } from './Message';
 
 @Component({
   selector: 'app-message',
@@ -7,12 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessageComponent implements OnInit {
 
-  header: string;
-  message: string;
+  @Input() message: Message
+  @Output() closeMessage = new EventEmitter<boolean>();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onClose() {
+    this.closeMessage.emit(true);
   }
 
 }
