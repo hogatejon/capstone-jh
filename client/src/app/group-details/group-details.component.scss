@@ -5,6 +5,10 @@ header {
   align-items: center;
 }
 
+h2 {
+  margin: 0.5rem 0;
+}
+
 p {
   color: #869d7a;
   font-weight: bold;
@@ -39,4 +43,32 @@ section {
   flex-wrap: wrap;
   justify-content: space-between;
   align-content: stretch;
+}
+
+div > button:first-of-type {
+  background-color: #869d7a;
+  color: white;
+}
+
+.title > div {
+  border-bottom: solid gray 1px;
+}
+
+@media (max-width: 481px) {
+  h1, p {
+    margin: .5rem 0;
+  }
+
+  div > button:last-of-type {
+    margin: initial;
+  }
+
+  header {
+    div.buttons {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
 }

@@ -1,4 +1,8 @@
 <h1>Home</h1>
+<p class="explanation-box">
+  Choose a Type of fishing below to get started! Or use the navigation bar
+  at the top of the page to view All Charters.
+</p>
 <div class="flex-container" *ngIf="organizations$ | async as organizations; else isLoading">
   <section *ngFor="let org of organizations">
     <app-organization [org]="org"></app-organization>
