@@ -1,6 +1,6 @@
 # Overview
 
-This is an app that a fishing charter business can use to maintain and keep track of different charters that they offer. They can add Charters to predefined 
+This is an app that a fishing charter business can use to maintain and keep track of different charters that they offer. They can add Charters to predefined types of fishing (or Organizations)
 
 ## How to Start Server
 
