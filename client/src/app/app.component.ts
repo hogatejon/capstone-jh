@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Message } from './shared/components/message/Message';
 import { MessageService } from './shared/components/message/message.service';
 import { OrganizationService } from './shared/services/organization.service';
-import { trigger, style, animate, transition } from '@angular/animations';
+import { trigger, style, animate, transition, state } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
@@ -13,18 +13,10 @@ import { trigger, style, animate, transition } from '@angular/animations';
       'fade',
       [
         transition(
-          ':enter',
-          [
-            style({ opacity: 0 }),
-            animate('1s ease-out',
-                    style({ opacity: 1 }))
-          ]
-        ),
-        transition(
           ':leave',
           [
             style({ opacity: 1 }),
-            animate('1s ease-in',
+            animate('500ms ease-in',
                     style({ opacity: 0 }))
           ]
         )

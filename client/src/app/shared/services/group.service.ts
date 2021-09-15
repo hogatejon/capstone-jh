@@ -25,6 +25,7 @@ export class GroupService {
   constructor(private readonly http: HttpClient) { }
 
   charters$: BehaviorSubject<Charter[]> = new BehaviorSubject<Charter[]>(null);
+  charterById$: BehaviorSubject<Charter> = new BehaviorSubject<Charter>(null);
 
   getAllCharters() {
     this.http.get<Charter[]>(this.getAllGroupsUrl).subscribe((charters) => {
@@ -32,12 +33,14 @@ export class GroupService {
     });
   }
 
-  getChartersByOrg<Charter>(orgId: string): Observable<Charter[]> {
-    return this.http.get<Charter[]>(this.getGroupsByOrgUrl + orgId);
+  getCharterById(groupId: number | string) {
+    this.http.get<Charter>(this.getGroupByIdUrl + groupId).subscribe((charter) => {
+      this.charterById$.next(charter);
+    });
   }
 
-  getCharterById<Charter>(groupId: number): Observable<Charter> {
-    return this.http.get<Charter>(this.getGroupByIdUrl + groupId);
+  getChartersByOrg<Charter>(orgId: string): Observable<Charter[]> {
+    return this.http.get<Charter[]>(this.getGroupsByOrgUrl + orgId);
   }
 
   addCharter<Charter>(charter: Charter): Observable<Charter> {

@@ -2,13 +2,13 @@ export class Message {
 
   header: string;
   message: string;
-  style: string;
+  severity: string;
   timeout: number;
 
-  constructor(header, message, style?, timeout?) {
+  constructor(header, message, severity?, timeout?) {
     this.header = header;
     this.message = message;
-    this.style = style || 'info';
+    this.severity = severity || 'info';
     this.timeout = timeout || 4000;
   }
 }

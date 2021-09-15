@@ -22,8 +22,7 @@
   </div>
   <app-member *ngFor="let member of charter?.Members"
             [member]="member"
-            [groupId]="charter.GroupId"
-            (reload)="reload()"></app-member>
+            [groupId]="charter.GroupId"></app-member>
 </section>
 
 <ng-template #isLoading>

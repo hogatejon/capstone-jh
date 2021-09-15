@@ -14,14 +14,14 @@
         <div *ngIf="!memberForm.controls['MemberName'].valid && memberForm.controls['MemberName'].touched"
            class="validation-error">Provide a Member Name</div>
         <label class="form-label-required" for="MemberEmail">Member Email</label>
-        <input type="text"
+        <input type="email"
                formControlName="MemberEmail"
                placeholder="Enter Member Email here"
                [class.input-error]="!memberForm.controls['MemberEmail'].valid && memberForm.controls['MemberEmail'].touched">
         <div *ngIf="!memberForm.controls['MemberEmail'].valid && memberForm.controls['MemberEmail'].touched"
              class="validation-error">Provide a Member Email</div>
         <label class="form-label-required" for="MemberPhone">Member Phone Number</label>
-        <input type="text"
+        <input type="tel"
                formControlName="MemberPhone"
                placeholder="Enter Member Phone here"
                [class.input-error]="!memberForm.controls['MemberPhone'].valid && memberForm.controls['MemberPhone'].touched">

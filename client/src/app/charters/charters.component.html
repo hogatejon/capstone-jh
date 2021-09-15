@@ -7,25 +7,26 @@
 <div *ngIf="charters$ | async | charterSearch: searchValue | orgFilter: orgFilterName as charters; else isLoading">
   <section class="top-container">
     <h1>Charters <span>({{ charters?.length }})</span></h1>
-    <div>
-      <label>Search:</label>
-      <input type="search"
-             placeholder="Search Charters"
-             [value]="searchValue"
-             (input)="searchCharters($event)"/>
-      <label *ngIf="searchValue !== ''">
-        Showing Results for: <em>{{ searchValue }}</em>
-      </label>
-    </div>
-    <div class="org-filter">
-      <label class="form-label">Filter by Org</label>
-      <select id="orgFilter" name="orgName" [value]="orgFilterName" (change)="filterByOrg($event.target.value)">
-        <option value="">All Charters</option>
-        <option *ngFor="let org of fishingOrgs" value="{{ org }}">{{ org }}</option>
-      </select>
-    </div>
-    <button *ngIf="orgFilterName !== '' || searchValue !== ''"
-            (click)="clearFilters()">Clear all Filters</button>
+    <section>
+      <div>
+        <input type="search"
+               placeholder="Search Charters"
+               [value]="searchValue"
+               (input)="searchCharters($event)"/>
+        <label *ngIf="searchValue !== ''">
+          Showing Results for: <em>{{ searchValue }}</em>
+        </label>
+      </div>
+      <div class="org-filter">
+        <label class="form-label">Filter by Org</label>
+        <select id="orgFilter" name="orgName" [value]="orgFilterName" (change)="filterByOrg($event.target.value)">
+          <option value="">All Charters</option>
+          <option *ngFor="let org of fishingOrgs" value="{{ org }}">{{ org }}</option>
+        </select>
+      </div>
+      <button *ngIf="orgFilterName !== '' || searchValue !== ''"
+              (click)="clearFilters()">Clear all Filters</button>
+    </section>
     <button (click)="addCharter()">+ Add a Charter</button>
   </section>
   <section class="charter-container">

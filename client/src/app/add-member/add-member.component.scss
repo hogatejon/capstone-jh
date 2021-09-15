@@ -17,8 +17,8 @@
 }
 
 .panel {
-  width: 50vw;
-  height: 75vh;
+  width: 35vw;
+  height: fit-content;
   background-color: white;
   border: 1px solid gray;
   border-radius: .75rem;
@@ -60,7 +60,7 @@ input {
   border-radius: 0.25rem;
 }
 
-input[type=text] {
+input[type=text], input[type=tel], input[type=email] {
   padding: 0.5rem;
 }
 
@@ -72,9 +72,15 @@ form {
   justify-content: space-evenly;
 }
 
-@media (max-width: 481px) {
+@media (max-width: 480px) {
   .panel {
     width: 85vw;
     height: fit-content;
   }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .panel {
+    height: fit-content;
+  };
 }

@@ -58,23 +58,29 @@ export class AddMemberComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     this.submit = true;
-    if (this.memberForm.valid && !this.currentValue) {
-      this.memberService.addMemberToGroup(this.addGroupId, this.memberForm.getRawValue()).pipe(takeUntil(this.ngDestroyed$)).subscribe(
-        () => {
-          this.messageService.showMessage('Member Added!', `You successfully added a member!`, 'success');
-          this.exitModal()
-        //TODO: Add error Handling
-        }
-      );
+    if (this.memberForm.valid) {
+      if (!this.currentValue) {
+        this.memberService.addMemberToGroup(this.addGroupId, this.memberForm.getRawValue()).pipe(takeUntil(this.ngDestroyed$)).subscribe(
+          () => {
+            this.messageService.showMessage('Member Added!', `You successfully added a member!`, 'success');
+            this.exitModal()
+          //TODO: Add error Handling
+          }
+        );
+      } else {
+        const addId = this.memberForm.getRawValue();
+        addId.MemberId = this.currentValue.MemberId;
+        this.memberService.editMemberInGroup(this.addGroupId, addId).pipe(takeUntil(this.ngDestroyed$)).subscribe(
+          () => {
+            this.messageService.showMessage('Member Edited!', `You successfully edited an existing member!`, 'success');
+            this.exitModal();
+          }
+        );
+      }
     } else {
-      const addId = this.memberForm.getRawValue();
-      addId.MemberId = this.currentValue.MemberId;
-      this.memberService.editMemberInGroup(this.addGroupId, addId).pipe(takeUntil(this.ngDestroyed$)).subscribe(
-        () => {
-          this.messageService.showMessage('Member Edited!', `You successfully edited an existing member!`, 'success');
-          this.exitModal();
-        }
-      );
+      this.memberForm.markAllAsTouched();
+      this.memberForm.markAsDirty();
+      this.messageService.showMessage('Error', 'Please fill out whole form before submitting', 'error');
     }
   }
 }

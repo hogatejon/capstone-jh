@@ -1,8 +1,16 @@
-header {
+.success > header {
   background-color: #869d7a;
+}
+
+.error > header {
+  background-color: #F26F6A;
+}
+
+header {
   padding: 0 1rem;
   display: flex;
   justify-content: space-between;
+  font-weight: bold;
 }
 
 section {
@@ -12,8 +20,9 @@ section {
   position: fixed;
   right: 1rem;
   top: 1rem;
-  z-index: 1000;
+  z-index: 2000;
   overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
 button {
@@ -23,4 +32,14 @@ button {
 div {
   padding: 1rem;
   background-color: white;
+}
+
+@media (max-width: 480px) {
+  section {
+    width: 60vw;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+
 }

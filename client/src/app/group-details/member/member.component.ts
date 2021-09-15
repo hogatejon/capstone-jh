@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { MessageService } from 'src/app/shared/components/message/message.service';
+import { GroupService } from 'src/app/shared/services/group.service';
 import { Member } from '../../models/Member';
 import { MemberService } from '../../shared/services/member.service';
 
@@ -13,7 +15,6 @@ export class MemberComponent implements OnInit, OnDestroy {
 
   @Input() member: Member;
   @Input() groupId: string;
-  @Output() reload = new EventEmitter<boolean>();
   showMemberModal: boolean = false;
   showDeleteModal: boolean = false;
   deleteHeader: string = 'Delete Member';
@@ -22,7 +23,9 @@ export class MemberComponent implements OnInit, OnDestroy {
   edit: boolean = false;
 
 
-  constructor(private readonly memberService: MemberService) { }
+  constructor(private readonly memberService: MemberService,
+              private readonly groupService: GroupService,
+              private readonly messageService: MessageService) { }
 
   ngOnInit(): void {
   }
@@ -39,7 +42,7 @@ export class MemberComponent implements OnInit, OnDestroy {
   hideMemberModal() {
     this.showMemberModal = false;
     this.edit = false;
-    this.reload.emit(true);
+    this.groupService.getCharterById(this.groupId);
   }
 
   deleteMember() {
@@ -50,7 +53,10 @@ export class MemberComponent implements OnInit, OnDestroy {
   resolveDelete(shouldDelete: boolean) {
     if (shouldDelete) {
       this.memberService.deleteMemberFromGroup(this.groupId, this.member.MemberId).pipe(takeUntil(this.ngDestroyed$)).subscribe(
-        () => this.reload.emit(true)
+        () => {
+          this.messageService.showMessage('Member Deleted!', 'You have successfully deleted a member!', 'success')
+          this.groupService.getCharterById(this.groupId);
+        }
         //TODO: Add Error Hanlding
       );
     }

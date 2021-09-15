@@ -19,12 +19,14 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
   showGroupModal: boolean = false;
   availMessage: string;
   edit: boolean = false;
+  groupId: number;
 
   constructor(private readonly groupService: GroupService,
               private readonly route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.subscribeToRouteParams();
+    this.charter$ = this.groupService.charterById$;
   }
 
   ngOnDestroy() {
@@ -38,12 +40,12 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
 
   hideMemberModal() {
     this.showMemberModal = false;
-    window.location.reload();
+    this.groupService.getCharterById(this.groupId);
   }
 
   hideGroupModal() {
     this.showGroupModal = false;
-    this.reload();
+    this.groupService.getCharterById(this.groupId);
   }
 
   editCharter() {
@@ -59,13 +61,10 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
     }
   }
 
-  reload() {
-    window.location.reload();
-  }
-
   private subscribeToRouteParams() {
     this.route.queryParams.pipe(takeUntil(this.ngDestroyed$)).subscribe((params: Params) => {
-      this.charter$ = this.groupService.getCharterById(params.groupId);
+      this.groupId = params.groupId;
+      this.groupService.getCharterById(params.groupId);
     });
   }
 }

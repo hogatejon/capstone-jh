@@ -10,10 +10,26 @@ export class MessageComponent implements OnInit {
 
   @Input() message: Message
   @Output() closeMessage = new EventEmitter<boolean>();
+  messageStyle: string;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.setSeverity();
+  }
+
+  setSeverity() {
+    switch (this.message.severity) {
+      case 'error':
+        this.messageStyle = 'error';
+        break;
+      case 'success':
+        this.messageStyle = 'success';
+        break;
+      default:
+        this.messageStyle = 'success';
+        break;
+    }
   }
 
   onClose() {

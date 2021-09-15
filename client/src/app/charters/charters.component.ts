@@ -36,7 +36,7 @@ export class ChartersComponent implements OnInit, OnDestroy {
     this.charters$ = this.groupService.charters$;
     this.groupService.filterOrg.subscribe(group => {
       if (group) {
-        this.searchValue = group
+        this.orgFilterName = group;
       }
     });
   }
@@ -73,10 +73,24 @@ export class ChartersComponent implements OnInit, OnDestroy {
     this.groupIdDelete = group.GroupId;
   }
 
+  scrollToTop() {
+    (function smoothScroll() {
+      let currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      if (currentScroll > 0) {
+        window.requestAnimationFrame(smoothScroll);
+        window.scrollTo(0, currentScroll - (currentScroll / 8));
+      }
+    })();
+  }
+
   resolveDelete(shouldDelete: boolean) {
     if (shouldDelete) {
       this.groupService.deleteCharterById(this.groupIdDelete).pipe(takeUntil(this.ngDestroyed$)).subscribe(
-        () => { this.messageService.showMessage('Charter Deleted', 'You have successfully deleted a charter', 'success'); }
+        () => {
+          this.groupService.getAllCharters();
+          this.scrollToTop();
+          this.messageService.showMessage('Charter Deleted', 'You have successfully deleted a charter', 'success');
+        }
       );
     }
     this.showDeleteModal = false;

@@ -76,6 +76,7 @@ export class AddCharterComponent implements OnInit, OnDestroy {
     } else {
       this.charterForm.markAllAsTouched();
       this.charterForm.markAsDirty();
+      this.messageService.showMessage('Error', 'Please fill out whole form before submitting', 'error');
     }
   }
 
