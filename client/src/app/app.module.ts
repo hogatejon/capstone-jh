@@ -23,7 +23,7 @@ import { AddMemberComponent } from './add-member/add-member.component';
 import { PhonePipe } from './shared/pipes/phone.pipe';
 import { CharterSearchPipe } from './shared/pipes/charter-search.pipe';
 import { SpotsAvailablePipe } from './shared/pipes/spots-available.pipe';
-import { OrgFilterPipe } from './shared/org-filter.pipe';
+import { OrgFilterPipe } from './shared/pipes/org-filter.pipe';
 
 
 @NgModule({

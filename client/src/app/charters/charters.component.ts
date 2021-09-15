@@ -25,6 +25,7 @@ export class ChartersComponent implements OnInit, OnDestroy {
   groupIdDelete: number;
   noChartersInSearch: boolean = false;
   searchValue: string = '';
+  orgFilterName: string = '';
   edit: boolean;
 
   constructor(private readonly groupService: GroupService,
@@ -47,6 +48,15 @@ export class ChartersComponent implements OnInit, OnDestroy {
 
   searchCharters(event) {
     this.searchValue = event?.target?.value;
+  }
+
+  filterByOrg(orgName: string) {
+    this.orgFilterName = orgName;
+  }
+
+  clearFilters() {
+    this.orgFilterName = '';
+    this.searchValue = '';
   }
 
   addCharter() {
