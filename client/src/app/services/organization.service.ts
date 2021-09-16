@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { FishingOrganization } from '../../models/FishingOrganization';
+import { FishingOrganization } from '../models/FishingOrganization';
 
 import { BehaviorSubject } from 'rxjs';
 

@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { FishingOrganization } from 'src/app/models/FishingOrganization';
-import { GroupService } from 'src/app/shared/services/group.service';
+import { GroupService } from 'src/app/services/group.service';
 
 @Component({
   selector: 'app-organization',

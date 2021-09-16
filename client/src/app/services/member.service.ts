@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Member } from '../../models/Member';
+import { Member } from '../models/Member';
 
 import { Observable } from 'rxjs';
 

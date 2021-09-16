@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
-import { Charter } from '../models/Charter';
-import { GroupService } from '../shared/services/group.service';
+import { Charter } from '../../models/Charter';
+import { GroupService } from '../../services/group.service';
 
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';

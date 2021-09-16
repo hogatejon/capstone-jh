@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FishingOrganization } from '../models/FishingOrganization';
-import { OrganizationService } from '../shared/services/organization.service';
+import { OrganizationService } from '../services/organization.service';
 
 import { Observable, Subject } from 'rxjs';
 

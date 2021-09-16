@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Route, Routes, RouterModule, CanActivate } from '@angular/router';
 
 import { AboutComponent } from './about/about.component';
-import { charterRoutes } from './charters/charters-routing.module';
 import { FishingOrgComponent } from './fishing-org/fishing-org.component';
 import { LoginComponent } from './login/login.component';
 import { UserLogInGuardService } from './login/user-log-in-guard.service';
@@ -25,7 +24,10 @@ const routes: Routes = [
         component: FishingOrgComponent,
         canActivate: [UserLogInGuardService],
       },
-      ...charterRoutes,
+      {
+        path: 'charters',
+        loadChildren: () => import('./charters/charters.module').then(m => m.ChartersModule)
+      },
       { path: 'about',
         component: AboutComponent,
         canActivate: [UserLogInGuardService]

@@ -1,9 +1,9 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 
 import { MessageService } from 'src/app/shared/components/message/message.service';
-import { GroupService } from 'src/app/shared/services/group.service';
-import { Member } from '../../models/Member';
-import { MemberService } from '../../shared/services/member.service';
+import { GroupService } from 'src/app/services/group.service';
+import { Member } from '../../../models/Member';
+import { MemberService } from '../../../services/member.service';
 
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';

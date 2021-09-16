@@ -1,10 +1,12 @@
-import { GroupDetailsComponent } from '../group-details/group-details.component';
+import { ModuleWithProviders } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { UserLogInGuardService } from '../login/user-log-in-guard.service';
 import { ChartersComponent } from './charters.component';
+import { GroupDetailsComponent } from './group-details/group-details.component';
 
-export const charterRoutes = [
+export const routes = [
   {
-    path: 'charters',
+    path: '',
     children: [
       {
         path: '',
@@ -19,3 +21,5 @@ export const charterRoutes = [
     ]
   }
 ]
+
+export const charterRoutes: ModuleWithProviders = RouterModule.forChild(routes);

@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { Member } from '../models/Member';
-import { MessageService } from '../shared/components/message/message.service';
-import { MemberService } from '../shared/services/member.service';
+import { Member } from '../../models/Member';
+import { MessageService } from '../../shared/components/message/message.service';
+import { MemberService } from '../../services/member.service';
 
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';

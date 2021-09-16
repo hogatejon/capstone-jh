@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Charter } from '../../models/Charter';
+import { Charter } from '../models/Charter';
 
 import { BehaviorSubject, Observable } from 'rxjs';
 

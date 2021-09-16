@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnIni
 
 import { Charter } from '../models/Charter';
 import { MessageService } from '../shared/components/message/message.service';
-import { GroupService } from '../shared/services/group.service';
+import { GroupService } from '../services/group.service';
 
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
