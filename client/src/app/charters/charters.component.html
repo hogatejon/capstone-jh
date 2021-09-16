@@ -20,7 +20,7 @@
         </div>
         <div class="org-filter">
           <label class="form-label">Filter by Type of Fishing</label>
-          <select id="orgFilter" name="orgName" [value]="orgFilterName" (change)="filterByOrg($event.target.value)">
+          <select id="orgFilter" name="orgName" value="orgFilterName" (change)="filterByOrg($event.target.value)">
             <option value="">All Charters</option>
             <option *ngFor="let org of fishingOrgs" value="{{ org }}">{{ org }}</option>
           </select>
@@ -32,7 +32,7 @@
     <button (click)="addCharter()">+ Add a Charter</button>
   </section>
   <section class="charter-container">
-    <div *ngFor="let charter of charters; let i = index">
+    <div *ngFor="let charter of charters.slice().reverse(); let i = index">
       <app-group [group]="charter"
                  [charterNum]="i + 1"
                  (deleteCharter)="setDeleteModal($event)"></app-group>

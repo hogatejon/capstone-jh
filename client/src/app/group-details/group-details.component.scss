@@ -31,7 +31,7 @@ section {
   padding: 1rem;
   border-radius: .25rem;
   background-color: white;
-  box-shadow: 40px 40px 100px 10px rgba(0,0,0,0.59);
+  box-shadow: 0 3px 6px rgb(0 0 0 / 30%);
 }
 
 .member-message {
@@ -86,10 +86,11 @@ li {
   .buttons {
     flex-grow: 1;
     display: flex;
+    justify-content: flex-end;
   }
 
-  button:first-of-type {
-    margin-left: auto;
+  h1, p {
+    padding: 0 0.5rem;
   }
 }
 

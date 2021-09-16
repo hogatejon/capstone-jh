@@ -35,3 +35,13 @@ input[type=submit] {
 h1 {
   text-align: center;
 }
+
+@media (max-width: 480px) {
+  .panel{
+    width: fit-content;
+  }
+
+  button {
+    margin: 0 auto;
+  }
+}

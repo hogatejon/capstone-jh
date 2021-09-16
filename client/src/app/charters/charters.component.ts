@@ -6,6 +6,7 @@ import { GroupService } from '../shared/services/group.service';
 
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-charters',
@@ -33,22 +34,17 @@ export class ChartersComponent implements OnInit, OnDestroy {
 
   constructor(private readonly groupService: GroupService,
               private readonly messageService: MessageService,
-              private readonly cd: ChangeDetectorRef) { }
+              private readonly route: ActivatedRoute,
+              private readonly router: Router) { }
 
   ngOnInit(): void {
     this.groupService.getAllCharters();
     this.charters$ = this.groupService.charters$;
-    this.groupService.filterOrg.subscribe(group => {
-      if (group) {
-        this.orgFilterName = group;
-        this.cd.markForCheck();
-      }
-    });
+    this.subscribeToRouteParams();
   }
 
   ngOnDestroy() {
     this.ngDestroyed$.next();
-    this.groupService.filterOrg.next(null);
   }
 
   searchCharters(event) {
@@ -57,6 +53,9 @@ export class ChartersComponent implements OnInit, OnDestroy {
 
   filterByOrg(orgName: string) {
     this.orgFilterName = orgName;
+    if (orgName) {
+      this.router.navigate(['/charters'], { queryParams: { filterId: orgName } });
+    }
   }
 
   clearFilters() {
@@ -99,6 +98,18 @@ export class ChartersComponent implements OnInit, OnDestroy {
       );
     }
     this.showDeleteModal = false;
+  }
+
+ private subscribeToRouteParams() {
+    this.route.queryParams.pipe(takeUntil(this.ngDestroyed$)).subscribe((params) => {
+        if (params?.filterId) {
+          this.filterByOrg(params.filterId);
+          setTimeout(() => {
+            const selectBox: HTMLSelectElement = document.getElementById('orgFilter') as HTMLSelectElement;
+            selectBox.value = params.filterId;
+          }, 50);
+        }
+    });
   }
 
 }

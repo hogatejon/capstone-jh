@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { User } from '../models/user.interface';
+import { MessageService } from '../shared/components/message/message.service';
 import { LoginService } from '../shared/services/login.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class NavComponent implements OnInit {
   @Input() user: User;
 
   constructor(private readonly loginService: LoginService,
-              private readonly router: Router) { }
+              private readonly router: Router,
+              private readonly messageService: MessageService) { }
 
   ngOnInit(): void {
   }
@@ -22,6 +24,7 @@ export class NavComponent implements OnInit {
   logout() {
     this.loginService.userResponse$.next(null);
     this.router.navigate(['/login']);
+    this.messageService.showMessage('Success', 'You have successfully logged out!', 'success');
   }
 
 }

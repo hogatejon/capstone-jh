@@ -44,7 +44,7 @@ div {
 
 @media (max-width: 480px) {
   section {
-    width: 60vw;
+    width: calc(100% - 2rem);
   }
 }
 

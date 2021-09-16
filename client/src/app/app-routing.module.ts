@@ -10,7 +10,7 @@ import { UserLogInGuardService } from './shared/guards/user-log-in-guard.service
 
 const fallbackRoute: Route = {
   path: '**',
-  component: FishingOrgComponent
+  component: LoginComponent
 }
 
 const routes: Routes = [

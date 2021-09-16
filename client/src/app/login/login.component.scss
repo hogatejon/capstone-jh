@@ -28,6 +28,22 @@ form {
   justify-content: space-evenly;
 }
 
+
 input[type=submit] {
   margin-top: 1rem;
+}
+.error {
+  background-color: rgb(199, 55, 55);
+  text-align: center;
+  color: white;
+}
+
+button {
+  margin-top: 1rem;
+}
+
+@media (max-width: 480px) {
+  .panel{
+    width: fit-content;
+  }
 }

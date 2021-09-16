@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.buildLoginForm();
+    this.form();
   }
 
   ngOnDestroy() {
@@ -42,16 +43,26 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.router.navigate(['/register']);
   }
 
+  form() {
+    this.loginForm.valueChanges.pipe(takeUntil(this.ngDestroyed$)).subscribe( () => {
+      if (this.loginError) {
+        this.loginError = false;
+      }
+    })
+  }
+
   onSubmit() {
     if (this.loginForm.valid) {
       this.loginService.requestLogin(this.loginForm.getRawValue());
       this.loginService.userResponse$.pipe(takeUntil(this.ngDestroyed$)).subscribe((res) => {
-        if (res) {
+        if (res?.id && res?.name && res?.username) {
           this.router.navigate(['/home']);
         } else {
-          this.loginError = true;
+          setTimeout(() => {
+            this.loginError = true;
+          }, 100);
         }
-      })
+      });
     } else {
       this.loginForm.markAllAsTouched();
       this.messageService.showMessage('Error', 'Please provide values for all fields', 'error');

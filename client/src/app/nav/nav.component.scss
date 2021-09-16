@@ -45,6 +45,10 @@ ul > li:last-of-type {
   cursor: default;
 }
 
+button {
+  margin-left: 1rem;
+}
+
 @media (max-width: 480px) {
   ul {
     flex-direction: column;
@@ -58,6 +62,14 @@ ul > li:last-of-type {
     max-height: 2rem;
   }
 
+  ul > li:last-of-type {
+    flex: 0 1;
+    order: -1;
+    margin-left: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
   .active {
     background-color: rgb(75, 75, 75);
   }
@@ -67,6 +79,16 @@ ul > li:last-of-type {
   li > a {
     font-size: initial;
   }
+
+  ul > li:last-of-type {
+    text-align: center;
+  }
+
+  button {
+    margin-left: auto;
+  }
+
+
 }
 
 

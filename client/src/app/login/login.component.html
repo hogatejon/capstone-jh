@@ -20,9 +20,9 @@
     <input type="submit"
             value="Login"
             (click)="onSubmit()">
+    <button (click)="registerUser()">Register</button>
   </form>
-  <button (click)="registerUser()">Register</button>
 </section>
-<section *ngIf="loginError" class="panel">
-  You Failed
+<section *ngIf="loginError" class="panel error">
+  Login Failed Please Try Again
 </section>

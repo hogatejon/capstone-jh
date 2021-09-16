@@ -22,7 +22,7 @@ export class OrganizationComponent implements OnInit {
 
   navToGroup() {
     this.groupService.filterOrg.next(this.org.OrganizationName);
-    this.router.navigate(['/charters']);
+    this.router.navigate(['/charters'], { queryParams: { filterId: this.org.OrganizationName}});
   }
 
   setFishingImages(org: FishingOrganization) {
