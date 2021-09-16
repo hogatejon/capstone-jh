@@ -5,7 +5,6 @@ import { AboutComponent } from './about/about.component';
 import { charterRoutes } from './charters/charters-routing.module';
 import { FishingOrgComponent } from './fishing-org/fishing-org.component';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './login/register/register.component';
 import { UserLogInGuardService } from './login/user-log-in-guard.service';
 
 const fallbackRoute: Route = {
