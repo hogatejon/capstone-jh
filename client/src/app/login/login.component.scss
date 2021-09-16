@@ -18,6 +18,8 @@
   padding: 1rem;
   margin-bottom: 1rem;
   box-shadow: 0 3px 6px rgb(0 0 0 / 30%);
+  display: flex;
+  flex-flow: column wrap;
 }
 
 form {
@@ -28,6 +30,13 @@ form {
   justify-content: space-evenly;
 }
 
+input[type=text], input[type=password] {
+  height: 2rem;
+}
+
+label {
+  margin-top: 1rem;
+}
 
 input[type=submit] {
   margin-top: 1rem;
@@ -43,6 +52,8 @@ input[type=submit] {
 
 button {
   margin-top: 1rem;
+  width: 11.25rem;
+  align-self: center;
 }
 
 header {

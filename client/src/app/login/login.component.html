@@ -23,8 +23,8 @@
     <input type="submit"
             value="Login"
             (click)="onSubmit()">
-    <button (click)="registerUser()">Register</button>
   </form>
+  <button (click)="registerUser()">Register</button>
 </section>
 <section *ngIf="loginError" class="panel error">
   Username or Password is incorrect, please try again.

@@ -55,6 +55,8 @@ export class ChartersComponent implements OnInit, OnDestroy {
     this.orgFilterName = orgName;
     if (orgName) {
       this.router.navigate(['/charters'], { queryParams: { filterId: orgName } });
+    } else {
+      this.router.navigate(['/charters']);
     }
   }
 

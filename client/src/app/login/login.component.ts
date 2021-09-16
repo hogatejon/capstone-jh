@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   registerUser() {
-    this.router.navigate(['/register']);
+    this.router.navigate(['/login/register']);
   }
 
   form() {

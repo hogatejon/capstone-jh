@@ -30,7 +30,6 @@ export class LoginService {
 
   registerUser(registerRequest: LoginRequest) {
     this.http.get(this.userNameAvailableUrl + registerRequest.username, { responseType: 'text'}).subscribe((response) => {
-      console.log(response)
       if (response.toString() === 'YES') {
         this.http.post(this.addUserUrl, registerRequest).subscribe((res) => {
           this.messageService.showMessage('Success!', 'You have registered a new User!', 'success');
