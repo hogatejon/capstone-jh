@@ -14,6 +14,7 @@
       <button (click)="editCharter()">Edit Charter</button>
     </div>
   </header>
+  <a (click)="navToCharters()">&#8592; Back to Charters</a>
   <h2>Member List</h2>
   <div class="member-message">
     <h3 *ngIf="charter?.Members?.length === 0" class="no-members">

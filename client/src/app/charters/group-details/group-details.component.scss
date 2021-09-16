@@ -5,6 +5,16 @@ header {
   align-items: center;
 }
 
+a {
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 h2 {
   margin: 0.5rem 0;
 }

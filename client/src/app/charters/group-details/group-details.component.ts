@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { Charter } from '../../models/Charter';
 import { GroupService } from '../../services/group.service';
@@ -24,7 +24,8 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
   isFull: boolean;
 
   constructor(private readonly groupService: GroupService,
-              private readonly route: ActivatedRoute) { }
+              private readonly route: ActivatedRoute,
+              private readonly router: Router) { }
 
   ngOnInit(): void {
     this.subscribeToRouteParams();
@@ -62,6 +63,10 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
     } else {
       this.isFull = false;
     }
+  }
+
+  navToCharters() {
+    this.router.navigate(['/charters']);
   }
 
   private subscribeToRouteParams() {
