@@ -1,14 +1,17 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+
 import { Charter } from '../models/Charter';
 import { MessageService } from '../shared/components/message/message.service';
 import { GroupService } from '../shared/services/group.service';
 
+import { Observable, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+
 @Component({
   selector: 'app-charters',
   templateUrl: './charters.component.html',
-  styleUrls: ['./charters.component.scss']
+  styleUrls: ['./charters.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChartersComponent implements OnInit, OnDestroy {
 
@@ -29,7 +32,8 @@ export class ChartersComponent implements OnInit, OnDestroy {
   edit: boolean;
 
   constructor(private readonly groupService: GroupService,
-              private readonly messageService: MessageService) { }
+              private readonly messageService: MessageService,
+              private readonly cd: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.groupService.getAllCharters();
@@ -37,6 +41,7 @@ export class ChartersComponent implements OnInit, OnDestroy {
     this.groupService.filterOrg.subscribe(group => {
       if (group) {
         this.orgFilterName = group;
+        this.cd.markForCheck();
       }
     });
   }

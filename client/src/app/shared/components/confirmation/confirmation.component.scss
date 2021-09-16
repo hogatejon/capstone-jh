@@ -32,6 +32,14 @@
   border-bottom: 1px solid gray;
   padding: 0 1rem;
   background-color: #F7F7F7;
+
+  div {
+    cursor: pointer;
+  }
+
+  div:hover {
+    color:#E66360;
+  }
 }
 
 .panel-content {

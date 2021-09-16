@@ -19,7 +19,7 @@
           </label>
         </div>
         <div class="org-filter">
-          <label class="form-label">Filter by Org</label>
+          <label class="form-label">Filter by Type of Fishing</label>
           <select id="orgFilter" name="orgName" [value]="orgFilterName" (change)="filterByOrg($event.target.value)">
             <option value="">All Charters</option>
             <option *ngFor="let org of fishingOrgs" value="{{ org }}">{{ org }}</option>

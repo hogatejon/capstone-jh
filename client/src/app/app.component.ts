@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { trigger, style, animate, transition, state } from '@angular/animations';
+
 import { Message } from './shared/components/message/Message';
 import { MessageService } from './shared/components/message/message.service';
 import { OrganizationService } from './shared/services/organization.service';
-import { trigger, style, animate, transition, state } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
