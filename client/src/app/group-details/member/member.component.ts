@@ -15,6 +15,7 @@ export class MemberComponent implements OnInit, OnDestroy {
 
   @Input() member: Member;
   @Input() groupId: string;
+  @Input() index: number;
   showMemberModal: boolean = false;
   showDeleteModal: boolean = false;
   deleteHeader: string = 'Delete Member';

@@ -54,6 +54,10 @@ div > button:first-of-type {
   border-bottom: solid gray 1px;
 }
 
+li {
+  list-style-position: inside;
+}
+
 @media (max-width: 481px) {
   h1, p {
     margin: .5rem 0;
@@ -67,8 +71,23 @@ div > button:first-of-type {
     div.buttons {
       display: flex;
       flex-flow: row nowrap;
-      justify-content: space-between;
       width: 100%;
+
+      button:first-of-type {
+        margin-right: 1rem;
+      }
     }
   }
 }
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .buttons {
+    flex-grow: 1;
+    display: flex;
+  }
+
+  button:first-of-type {
+    margin-left: auto;
+  }
+}
+

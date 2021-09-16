@@ -1,9 +1,9 @@
-.success > header {
-  background-color: #869d7a;
+.success > header, .success > header > div {
+  background-color: #89d362;
 }
 
-.error > header {
-  background-color: #F26F6A;
+.error > header, .error > header > div {
+  background-color: #d62f29;
 }
 
 header {
@@ -11,6 +11,14 @@ header {
   display: flex;
   justify-content: space-between;
   font-weight: bold;
+}
+
+header > div {
+  cursor: pointer;
+}
+
+header > div:hover {
+  color: white;
 }
 
 section {

@@ -7,14 +7,21 @@
                   [panelHeader]="deleteHeader"
                   [message]="deleteMessage"
                   (resolve)="resolveDelete($event)"></app-confirmation>
-<section class="panel">
-  <div class="member-info">
-    <p>Name: {{ member.MemberName }}</p>
-    <p>Email: {{ member.MemberEmail }}</p>
-    <p>Phone: {{ member.MemberPhone | phone}}</p>
+<div class="panel">
+  <div class="number">
+    <div>
+      {{ index }}
+    </div>
   </div>
-  <div class="buttons">
-    <button (click)="editMember()">Edit Member</button>
-    <button (click)="deleteMember()">Delete</button>
-  </div>
-</section>
+  <section class="panel-content">
+    <div class="member-info">
+      <p><em>Name:</em> {{ member.MemberName }}</p>
+      <p><em>Email:</em> {{ member.MemberEmail }}</p>
+      <p><em>Phone:</em> {{ member.MemberPhone | phone}}</p>
+    </div>
+    <div class="buttons">
+      <button (click)="editMember()">Edit Member</button>
+      <button (click)="deleteMember()">Delete</button>
+    </div>
+  </section>
+</div>

@@ -32,6 +32,22 @@ section > div {
   flex-direction: column;
 }
 
+.filter-section {
+  display: flex;
+}
+
+.filter-controls {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.filter-section > button {
+  margin-top: 1rem;
+  background-color: #F26F6A;
+  color: black;
+  display: inline;
+}
+
 @media (max-width: 481px) {
   section.top-container {
     padding-bottom: 1rem;

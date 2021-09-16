@@ -1,8 +1,13 @@
 # Overview
 
-This is an app that a fishing charter business can use to maintain and keep track of different charters that they offer. They can add Charters to predefined types of fishing (or Organizations)
+This is an app that a fishing charter business can use to maintain and keep track of different charters that they offer. They can add charters (groups) to predefined types of fishing (organizations).  Those charters contain a list of members that the user of the app can add/edit/delete.
 
+# How to Run
+
+## Clone Repo
+First, you must clone the repo into your preferred editor.
 ## How to Start Server
+Once done cloning, follow these steps to start the 
 
 1. Open a terminal and change directory into the server folder.
 2. Run 'node server.js' without the single quotes.

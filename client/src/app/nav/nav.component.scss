@@ -2,16 +2,20 @@ ul {
   list-style-type: none;
   padding: 0;
   margin: auto;
-  height: 2.25rem;
+  height: fit-content;
   display: flex;
   background-color: #222222;
-  align-items: stretch;
 }
 
 ul > li {
   padding: 0.5rem 1rem;
   display: inline-block;
   cursor: pointer;
+  margin: auto 0;
+}
+
+ul > li:first-of-type {
+  cursor: default;
 }
 
 li:hover > a {
@@ -20,12 +24,43 @@ li:hover > a {
 
 li > a {
   color: white;
+  font-size: 1.25rem;
+  font-weight: bold;
   text-decoration: none;
 
 }
 
 .active {
-  background-color: #869d7a;
+  background-color: rgb(75, 75, 75);
+  border-radius: .25rem;
+}
+
+img {
+  max-width: 5.8rem;
+}
+
+@media (max-width: 480px) {
+  ul {
+    flex-direction: column;
+  }
+
+  li > a {
+    font-size: initial;
+  }
+
+  img {
+    max-height: 2rem;
+  }
+
+  .active {
+    background-color: rgb(75, 75, 75);
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  li > a {
+    font-size: initial;
+  }
 }
 
 

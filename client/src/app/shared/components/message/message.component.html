@@ -1,7 +1,7 @@
 <section [ngClass]="messageStyle">
   <header>
     <p>{{ message?.header }}</p>
-    <button (click)="onClose()">X</button>
+    <div (click)="onClose()">&#10006;</div>
   </header>
   <div>
     {{ message?.message }}

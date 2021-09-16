@@ -9,7 +9,7 @@
   <header>
     <h1>{{ charter?.GroupName }} &#8212; {{ charter.OrganizationName }}</h1>
     <p [ngClass]="charter | spotsAvailable: true">{{ charter | spotsAvailable }}</p>
-    <div>
+    <div class="buttons">
       <button *ngIf="!isFull()" (click)="addNewMember()">Add New Member</button>
       <button (click)="editCharter()">Edit Charter</button>
     </div>
@@ -20,9 +20,10 @@
       There are no Members, please add some!
     </h3>
   </div>
-  <app-member *ngFor="let member of charter?.Members"
+  <app-member *ngFor="let member of charter?.Members; let i = index"
             [member]="member"
-            [groupId]="charter.GroupId"></app-member>
+            [groupId]="charter.GroupId"
+            [index]="i + 1"></app-member>
 </section>
 
 <ng-template #isLoading>

@@ -1,19 +1,27 @@
+.panel-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
 .panel {
+  padding: 1rem 1rem 1rem 0;
+  margin-bottom: 1rem;
+  box-shadow: 0 3px 6px rgb(0 0 0 / 30%);
   border-radius: .25rem;
   border: 1px solid gray;
   background-color: white;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  box-shadow: 0 3px 6px rgb(0 0 0 / 30%);
+  overflow: hidden;
 }
 
 .buttons {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  border-left: gray 1px solid;
+  margin: -1rem 0;
 }
 
 .buttons > button:last-of-type {
@@ -21,5 +29,56 @@
 }
 
 button {
-  margin: 0.75rem 0;
+  margin: 0.75rem 0 0.75rem 1rem;
+}
+
+.member-info {
+  padding-left: 1rem;
+}
+
+.number {
+  background-color: rgb(75, 75, 75);
+  padding: 0 2rem;
+  margin: -1rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid gray;
+
+  div {
+    color: white;
+    font-weight: bold;
+  }
+}
+
+em {
+  font-weight: bold;
+  font-style: normal;
+}
+
+@media (max-width: 480px) {
+  .panel {
+    flex-direction: column;
+  }
+
+  .panel-content {
+    flex-direction: column;
+  }
+
+  button:first-of-type {
+    margin-bottom: 0.5rem;
+  }
+
+  button:last-of-type {
+    margin-top: 0.5rem;
+  }
+
+  .member-info {
+    padding-top: 1rem;
+  }
+
+  .number {
+    margin-right: -1rem;
+    height: 2rem;
+  }
 }
