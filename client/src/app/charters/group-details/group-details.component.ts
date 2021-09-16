@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
 import { Charter } from '../../models/Charter';
@@ -16,11 +16,12 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
 
   ngDestroyed$ = new Subject();
   charter$: Observable<Charter>;
-  showMemberModal: boolean = false;
-  showGroupModal: boolean = false;
+  showMemberModal: boolean;
+  showGroupModal: boolean;
   availMessage: string;
-  edit: boolean = false;
+  edit: boolean;
   groupId: number;
+  isFull: boolean;
 
   constructor(private readonly groupService: GroupService,
               private readonly route: ActivatedRoute) { }
@@ -28,6 +29,7 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subscribeToRouteParams();
     this.charter$ = this.groupService.charterById$;
+    this.checkIsFull();
   }
 
   ngOnDestroy() {
@@ -54,11 +56,11 @@ export class GroupDetailsComponent implements OnInit, OnDestroy {
     this.showGroupModal = true;
   }
 
-  isFull() {
+  checkIsFull() {
     if (document.querySelector('header > p').classList.contains('no-avail')) {
-      return true;
+      this.isFull = true;
     } else {
-      return false;
+      this.isFull = false;
     }
   }
 

@@ -10,7 +10,7 @@
     <h1>{{ charter?.GroupName }} &#8212; {{ charter.OrganizationName }}</h1>
     <p [ngClass]="charter | spotsAvailable: true">{{ charter | spotsAvailable }}</p>
     <div class="buttons">
-      <button *ngIf="!isFull()" (click)="addNewMember()">Add New Member</button>
+      <button *ngIf="!isFull" (click)="addNewMember()">Add New Member</button>
       <button (click)="editCharter()">Edit Charter</button>
     </div>
   </header>
