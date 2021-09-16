@@ -47,6 +47,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
     }
   }
 
+  routeToLogin() {
+    this.router.navigate(['/login']);
+  }
+
   subscribeToUser() {
     this.loginService.userResponse$.pipe(takeUntil(this.ngDestroyed$)).subscribe((user) => {
       if (user?.id && user?.name && user?.username) {
