@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { User } from '../models/user.interface';
+import { LoginService } from '../shared/services/login.service';
 
 @Component({
   selector: 'app-nav',
@@ -7,9 +11,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
+  @Input() user: User;
+
+  constructor(private readonly loginService: LoginService,
+              private readonly router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  logout() {
+    this.loginService.userResponse$.next(null);
+    this.router.navigate(['/login']);
   }
 
 }

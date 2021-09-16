@@ -39,6 +39,12 @@ img {
   max-width: 5.8rem;
 }
 
+ul > li:last-of-type {
+  color: white;
+  margin-left: auto;
+  cursor: default;
+}
+
 @media (max-width: 480px) {
   ul {
     flex-direction: column;

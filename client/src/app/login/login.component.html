@@ -1,0 +1,28 @@
+<section class="panel">
+  Welcome to Fishing Charters Manager! Please Log In or register if you are new here!
+</section>
+<section class="panel">
+  <form [formGroup]="loginForm">
+    <label class="form-label-required" for="username">Username</label>
+    <input type="text"
+            formControlName="username"
+            placeholder="Enter Username"
+            [class.input-error]="!loginForm.controls['username'].valid && loginForm.controls['username'].touched">
+    <div *ngIf="!loginForm.controls['username'].valid && loginForm.controls['username'].touched"
+        class="validation-error">Provide a Username</div>
+    <label class="form-label-required" for="password">Password</label>
+    <input type="password"
+            formControlName="password"
+            placeholder="Enter Password"
+            [class.input-error]="!loginForm.controls['password'].valid && loginForm.controls['password'].touched">
+    <div *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched"
+          class="validation-error">Provide a Password</div>
+    <input type="submit"
+            value="Login"
+            (click)="onSubmit()">
+  </form>
+  <button (click)="registerUser()">Register</button>
+</section>
+<section *ngIf="loginError" class="panel">
+  You Failed
+</section>

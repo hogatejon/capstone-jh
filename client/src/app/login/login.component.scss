@@ -1,0 +1,33 @@
+.validation-error {
+  color: #cc2d24;
+  font-size: 0.875rem;
+}
+
+.input-error {
+  background-color: rgba(230, 99, 96, 0.2);
+}
+
+.panel {
+  width: 35vw;
+  height: fit-content;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: .75rem;
+  overflow: hidden;
+  margin: auto;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 3px 6px rgb(0 0 0 / 30%);
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-evenly;
+}
+
+input[type=submit] {
+  margin-top: 1rem;
+}

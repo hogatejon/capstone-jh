@@ -1,5 +1,6 @@
 <div id="wrapper">
-  <app-nav></app-nav>
+  <app-nav *ngIf="loggedIn"
+           [user]="user"></app-nav>
   <app-message *ngIf="showMessage"
                [@fade]
                [message]="message"

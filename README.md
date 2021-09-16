@@ -10,7 +10,33 @@ First, you must clone the repo into your preferred editor.
 Once done cloning, follow these steps to start the 
 
 1. Open a terminal and change directory into the server folder.
-2. Run 'node server.js' without the single quotes.
+2. Type 'npm install' and wait for everything to download
+3. Run 'node server.js' and the server should be up and running.
+
+## How to run the FE
+
+1. In another terminal instance, change directory into the client folder.
+2. Type 'npm install' again and wait for the download to finish.
+3. Then type 'ng serve' and wait for the app to boot.
+4. Go to your browser and type localhost:4200 to navigate to the app
+
+## On app open
+
+There is a login component to the app, so you will need to log in.  A test user is: 
+
+User Name: farmgirl
+Password: farmgirl
+
+
+
+
+
+
+
+
+
+
+
 
 ## Project Ideas Brainstorming:
 

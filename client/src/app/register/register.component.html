@@ -1,0 +1,29 @@
+<h1>Register User</h1>
+<section class="panel">
+  <form [formGroup]="registerForm">
+    <label class="form-label-required" for="name">Name</label>
+    <input type="text"
+            formControlName="name"
+            placeholder="Enter Name"
+            [class.input-error]="!registerForm.controls['name'].valid && registerForm.controls['name'].touched">
+    <div *ngIf="!registerForm.controls['name'].valid && registerForm.controls['name'].touched"
+        class="validation-error">Provide a Name</div>
+    <label class="form-label-required" for="username">Username</label>
+    <input type="text"
+            formControlName="username"
+            placeholder="Enter Username"
+            [class.input-error]="!registerForm.controls['username'].valid && registerForm.controls['username'].touched">
+    <div *ngIf="!registerForm.controls['username'].valid && registerForm.controls['username'].touched"
+        class="validation-error">Provide a Username</div>
+    <label class="form-label-required" for="password">Password</label>
+    <input type="password"
+            formControlName="password"
+            placeholder="Enter Password"
+            [class.input-error]="!registerForm.controls['password'].valid && registerForm.controls['password'].touched">
+    <div *ngIf="!registerForm.controls['password'].valid && registerForm.controls['password'].touched"
+          class="validation-error">Provide a Password</div>
+    <input type="submit"
+            value="Register"
+            (click)="onSubmit()">
+  </form>
+</section>

@@ -1,4 +1,5 @@
 import { GroupDetailsComponent } from '../group-details/group-details.component';
+import { UserLogInGuardService } from '../shared/guards/user-log-in-guard.service';
 import { ChartersComponent } from './charters.component';
 
 export const charterRoutes = [
@@ -8,16 +9,12 @@ export const charterRoutes = [
       {
         path: '',
         component: ChartersComponent,
-        data: {
-          breadcrumb: 'Charters'
-        }
+        canActivate: [UserLogInGuardService]
       },
       {
         path: 'details',
         component: GroupDetailsComponent,
-        data: {
-          breadcrumb: 'Charter Details'
-        }
+        canActivate: [UserLogInGuardService]
       }
     ]
   }
