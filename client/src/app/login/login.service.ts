@@ -5,7 +5,7 @@ import { LoginRequest } from 'src/app/models/login-request.interface';
 import { User } from 'src/app/models/user.interface';
 
 import { BehaviorSubject } from 'rxjs';
-import { MessageService } from '../components/message/message.service';
+import { MessageService } from '../shared/components/message/message.service';
 
 @Injectable({
   providedIn: 'root'

@@ -31,6 +31,9 @@ form {
 
 input[type=submit] {
   margin-top: 1rem;
+  background-color: #869d7a;
+  color: white;
+  font-weight: bold;
 }
 .error {
   background-color: rgb(199, 55, 55);
@@ -40,6 +43,15 @@ input[type=submit] {
 
 button {
   margin-top: 1rem;
+}
+
+header {
+  border-bottom: 2px gray solid;
+  background-color: #f2f2f2;
+  padding: 1rem;
+  margin: -1rem -1rem 1rem -1rem;
+  font-weight: bold;
+  text-align: center;
 }
 
 @media (max-width: 480px) {

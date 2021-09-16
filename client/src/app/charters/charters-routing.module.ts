@@ -1,5 +1,5 @@
 import { GroupDetailsComponent } from '../group-details/group-details.component';
-import { UserLogInGuardService } from '../shared/guards/user-log-in-guard.service';
+import { UserLogInGuardService } from '../login/user-log-in-guard.service';
 import { ChartersComponent } from './charters.component';
 
 export const charterRoutes = [

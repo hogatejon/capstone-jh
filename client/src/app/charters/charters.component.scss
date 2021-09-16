@@ -34,6 +34,7 @@ section > div {
 
 .filter-section {
   display: flex;
+  flex-flow: column wrap;
 }
 
 .filter-controls {
@@ -46,6 +47,10 @@ section > div {
   background-color: #F26F6A;
   color: black;
   display: inline;
+}
+
+#orgFilter {
+  height: 2rem;
 }
 
 @media (max-width: 481px) {

@@ -24,8 +24,6 @@ import { PhonePipe } from './shared/pipes/phone.pipe';
 import { CharterSearchPipe } from './shared/pipes/charter-search.pipe';
 import { SpotsAvailablePipe } from './shared/pipes/spots-available.pipe';
 import { OrgFilterPipe } from './shared/pipes/org-filter.pipe';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -49,8 +47,6 @@ import { RegisterComponent } from './register/register.component';
     CharterSearchPipe,
     SpotsAvailablePipe,
     OrgFilterPipe,
-    LoginComponent,
-    RegisterComponent
   ],
   imports: [
     AppRoutingModule,

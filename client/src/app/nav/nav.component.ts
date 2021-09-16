@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { User } from '../models/user.interface';
 import { MessageService } from '../shared/components/message/message.service';
-import { LoginService } from '../shared/services/login.service';
+import { LoginService } from '../login/login.service';
 
 @Component({
   selector: 'app-nav',

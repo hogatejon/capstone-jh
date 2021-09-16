@@ -2,6 +2,9 @@
   Welcome to Fishing Charters Manager! Please Log In or register if you are new here!
 </section>
 <section class="panel">
+  <header>
+    Login
+  </header>
   <form [formGroup]="loginForm">
     <label class="form-label-required" for="username">Username</label>
     <input type="text"
@@ -24,5 +27,5 @@
   </form>
 </section>
 <section *ngIf="loginError" class="panel error">
-  Login Failed Please Try Again
+  Username or Password is incorrect, please try again.
 </section>

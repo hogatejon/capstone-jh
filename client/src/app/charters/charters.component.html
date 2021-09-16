@@ -4,44 +4,43 @@
                   [panelHeader]="deleteHeader"
                   [message]="deleteMessage"
                   (resolve)="resolveDelete($event)"></app-confirmation>
-<div *ngIf="charters$ | async | charterSearch: searchValue | orgFilter: orgFilterName as charters; else isLoading">
+<ng-container *ngIf="charters$ | async | charterSearch: searchValue | orgFilter: orgFilterName as charters; else isLoading">
   <section class="top-container">
     <h1>Charters <span>({{ charters?.length }})</span></h1>
     <section class="filter-section">
-      <div>
-        <div class="filter-controls">
-          <input type="search"
-                 placeholder="Search Charters"
-                 [value]="searchValue"
-                 (input)="searchCharters($event)"/>
-          <label *ngIf="searchValue !== ''">
-            Showing Results for: <em>{{ searchValue }}</em>
-          </label>
-        </div>
-        <div class="org-filter">
-          <label class="form-label">Filter by Type of Fishing</label>
-          <select id="orgFilter" name="orgName" value="orgFilterName" (change)="filterByOrg($event.target.value)">
-            <option value="">All Charters</option>
-            <option *ngFor="let org of fishingOrgs" value="{{ org }}">{{ org }}</option>
-          </select>
-        </div>
+      <div class="filter-controls">
+        <input type="search"
+                placeholder="Search Charters"
+                [value]="searchValue"
+                (input)="searchCharters($event)"/>
+        <label *ngIf="searchValue !== ''">
+          Showing Results for: <em>{{ searchValue }}</em>
+        </label>
       </div>
-      <!-- <button *ngIf="orgFilterName !== '' || searchValue !== ''"
+      <div class="org-filter">
+        <label class="form-label">Filter by Type of Fishing</label>
+        <select id="orgFilter" name="orgName" value="orgFilterName" (change)="filterByOrg($event.target.value)">
+          <option value="">All Charters</option>
+          <option *ngFor="let org of fishingOrgs" value="{{ org }}">{{ org }}</option>
+        </select>
+      </div>
+      <!-- Possible button to clear all filters (search and dropdown)
+        <button *ngIf="orgFilterName !== '' || searchValue !== ''"
               (click)="clearFilters()">Clear all Filters</button> -->
     </section>
     <button (click)="addCharter()">+ Add a Charter</button>
   </section>
   <section class="charter-container">
-    <div *ngFor="let charter of charters.slice().reverse(); let i = index">
+    <ng-container *ngFor="let charter of charters.slice().reverse(); let i = index">
       <app-group [group]="charter"
                  [charterNum]="i + 1"
                  (deleteCharter)="setDeleteModal($event)"></app-group>
-    </div>
+    </ng-container>
     <div *ngIf="charters?.length === 0" class="no-charters">
       No Charters are available.
     </div>
   </section>
-</div>
+</ng-container>
 
 <ng-template #isLoading>
   <app-loader></app-loader>

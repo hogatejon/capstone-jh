@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { MessageService } from '../shared/components/message/message.service';
-import { LoginService } from '../shared/services/login.service';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-login',

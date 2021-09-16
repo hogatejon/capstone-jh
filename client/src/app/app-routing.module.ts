@@ -5,8 +5,8 @@ import { AboutComponent } from './about/about.component';
 import { charterRoutes } from './charters/charters-routing.module';
 import { FishingOrgComponent } from './fishing-org/fishing-org.component';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { UserLogInGuardService } from './shared/guards/user-log-in-guard.service';
+import { RegisterComponent } from './login/register/register.component';
+import { UserLogInGuardService } from './login/user-log-in-guard.service';
 
 const fallbackRoute: Route = {
   path: '**',
@@ -19,11 +19,7 @@ const routes: Routes = [
     children: [
       {
         path: 'login',
-        component: LoginComponent,
-      },
-      {
-        path: 'register',
-        component: RegisterComponent
+        loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
       },
       {
         path: 'home',
