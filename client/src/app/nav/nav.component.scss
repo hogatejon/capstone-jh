@@ -33,6 +33,9 @@ li > a {
 .active {
   background-color: rgb(75, 75, 75);
   border-radius: .25rem;
+  a {
+    text-decoration: underline;
+  }
 }
 
 img {

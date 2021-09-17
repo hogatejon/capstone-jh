@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Route, Routes, RouterModule, CanActivate } from '@angular/router';
+import { Route, Routes, RouterModule } from '@angular/router';
 
 import { AboutComponent } from './about/about.component';
 import { FishingOrgComponent } from './fishing-org/fishing-org.component';

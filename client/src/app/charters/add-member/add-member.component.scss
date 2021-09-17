@@ -80,15 +80,9 @@ form {
   justify-content: space-evenly;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .panel {
     width: 85vw;
     height: fit-content;
   }
-}
-
-@media (min-width: 481px) and (max-width: 768px) {
-  .panel {
-    height: fit-content;
-  };
 }

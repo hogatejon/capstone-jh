@@ -64,7 +64,7 @@ export class AddMemberComponent implements OnInit, OnDestroy {
       if (!this.currentValue) {
         this.memberService.addMemberToGroup(this.addGroupId, this.memberForm.getRawValue()).pipe(takeUntil(this.ngDestroyed$)).subscribe(
           () => {
-            this.messageService.showMessage('Member Added!', `You successfully added a member!`, 'success');
+            this.messageService.showMessage('Member Added!', `You successfully added ${this.memberForm.getRawValue().MemberName} to the Charter!`, 'success');
             this.exitModal()
           //TODO: Add error Handling
           }
@@ -74,7 +74,7 @@ export class AddMemberComponent implements OnInit, OnDestroy {
         addId.MemberId = this.currentValue.MemberId;
         this.memberService.editMemberInGroup(this.addGroupId, addId).pipe(takeUntil(this.ngDestroyed$)).subscribe(
           () => {
-            this.messageService.showMessage('Member Edited!', `You successfully edited an existing member!`, 'success');
+            this.messageService.showMessage('Member Edited!', `You successfully edited ${this.memberForm.getRawValue().MemberName}!`, 'success');
             this.exitModal();
           }
         );

@@ -109,7 +109,7 @@ export class ChartersComponent implements OnInit, OnDestroy {
           setTimeout(() => {
             const selectBox: HTMLSelectElement = document.getElementById('orgFilter') as HTMLSelectElement;
             selectBox.value = params.filterId;
-          }, 50);
+          }, 100);
         }
     });
   }

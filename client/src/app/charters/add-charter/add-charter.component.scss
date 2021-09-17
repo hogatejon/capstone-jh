@@ -81,9 +81,11 @@ form {
   justify-content: space-evenly;
 }
 
-@media (max-width: 481px) {
+@media (max-width: 768px) {
   .panel {
     width: 85vw;
     height: fit-content;
   }
 }
+
+

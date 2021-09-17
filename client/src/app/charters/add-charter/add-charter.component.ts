@@ -64,14 +64,14 @@ export class AddCharterComponent implements OnInit, OnDestroy {
       if (!this.currentValue) {
         this.groupService.addCharter(this.charterForm.getRawValue()).pipe(takeUntil(this.ngDestroyed$)).subscribe(() => {
           this.groupService.getAllCharters();
-          this.messageService.showMessage('Group Added!', 'You have successfully added a group', 'success');
+          this.messageService.showMessage('Group Added!', `You have successfully added ${this.charterForm.getRawValue().GroupName}`, 'success');
           this.exitModal();
         });
       } else {
         const appendId = this.charterForm.getRawValue();
         appendId.GroupId = this.currentValue.GroupId;
         this.groupService.editGroup(appendId).pipe(takeUntil(this.ngDestroyed$)).subscribe(() => {
-          this.messageService.showMessage('Group Edited!', 'You have successfully edited a group', 'success');
+          this.messageService.showMessage('Group Edited!', `You have successfully edited ${this.charterForm.getRawValue().GroupName}`, 'success');
           this.exitModal();
         });
       }
