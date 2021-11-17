@@ -22,4 +22,4 @@ export const routes = [
   }
 ]
 
-export const charterRoutes: ModuleWithProviders = RouterModule.forChild(routes);
+export const charterRoutes: ModuleWithProviders<RouterModule> = RouterModule.forChild(routes);
