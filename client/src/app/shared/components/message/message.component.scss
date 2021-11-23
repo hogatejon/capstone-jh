@@ -1,9 +1,13 @@
 .success > header, .success > header > div {
-  background-color: #51c257;
+  background-color: #52a356;
 }
 
 .error > header, .error > header > div {
   background-color: #d62f29;
+}
+
+.warn > header, .warn > header > div {
+  background-color: #e09406;
 }
 
 header {
@@ -18,7 +22,7 @@ header > div {
 }
 
 header > div:hover {
-  color: white;
+  color: red;
 }
 
 section {

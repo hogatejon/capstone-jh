@@ -27,6 +27,9 @@ export class MessageComponent implements OnInit {
       case 'success':
         this.messageStyle = 'success';
         break;
+      case 'warn':
+        this.messageStyle = 'warn';
+        break;
       default:
         this.messageStyle = 'success';
         break;

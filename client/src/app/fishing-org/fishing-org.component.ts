@@ -19,6 +19,7 @@ export class FishingOrgComponent implements OnInit {
 
   ngOnInit() {
     this.organizations$ = this.organizationService.organizations$;
+    this.organizationService.getOrganizations();
   }
 
   ngOnDestroy() {
