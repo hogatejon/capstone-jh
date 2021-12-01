@@ -1,8 +1,9 @@
 <h1>Home</h1>
-<p class="explanation-box">
+<p *ngIf="!altText" class="explanation-box" [ngClass]="{'dark-mode': darkMode}">
   Choose a Type of fishing below to get started! Or use the navigation bar
   at the top of the page to view All Charters.
 </p>
+<p *ngIf="altText" class="explanation-box" [ngClass]="{'dark-mode': darkMode}">This is the alternate text based on the input to the component</p>
 <div class="flex-container" *ngIf="organizations$ | async as organizations; else isLoading">
   <section *ngFor="let org of organizations">
     <app-organization [org]="org"></app-organization>

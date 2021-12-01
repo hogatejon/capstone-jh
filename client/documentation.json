@@ -2987,7 +2987,7 @@
         },
         {
             "name": "FishingOrgComponent",
-            "id": "component-FishingOrgComponent-44e47a6ff7c32d8589f0b3fc1eeeff5c",
+            "id": "component-FishingOrgComponent-9f644ddbc4a41b5097d6dc6158b3b81b",
             "file": "src/app/fishing-org/fishing-org.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3033,7 +3033,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 24,
+                    "line": 25,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -3055,7 +3055,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\nimport { FishingOrganization } from '../models/FishingOrganization';\nimport { OrganizationService } from '../services/organization.service';\n\nimport { Observable, Subject } from 'rxjs';\n\n@Component({\n  selector: 'app-fishing-org',\n  templateUrl: './fishing-org.component.html',\n  styleUrls: ['./fishing-org.component.scss']\n})\nexport class FishingOrgComponent implements OnInit {\n  organizations$: Observable<FishingOrganization[]>;\n\n  ngDestroyed$ = new Subject();\n\n  constructor(private readonly organizationService: OrganizationService) { }\n\n  ngOnInit() {\n    this.organizations$ = this.organizationService.organizations$;\n  }\n\n  ngOnDestroy() {\n    this.ngDestroyed$.next();\n  }\n}\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\nimport { FishingOrganization } from '../models/FishingOrganization';\nimport { OrganizationService } from '../services/organization.service';\n\nimport { Observable, Subject } from 'rxjs';\n\n@Component({\n  selector: 'app-fishing-org',\n  templateUrl: './fishing-org.component.html',\n  styleUrls: ['./fishing-org.component.scss']\n})\nexport class FishingOrgComponent implements OnInit {\n  organizations$: Observable<FishingOrganization[]>;\n\n  ngDestroyed$ = new Subject();\n\n  constructor(private readonly organizationService: OrganizationService) { }\n\n  ngOnInit() {\n    this.organizations$ = this.organizationService.organizations$;\n    this.organizationService.getOrganizations();\n  }\n\n  ngOnDestroy() {\n    this.ngDestroyed$.next();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -3650,7 +3650,7 @@
         },
         {
             "name": "LoaderComponent",
-            "id": "component-LoaderComponent-ad1c3e0bb4324c33f8d93dbe5a8f84ba",
+            "id": "component-LoaderComponent-63f748624671df10a39e4ec9e8842834",
             "file": "src/app/shared/components/loader/loader.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -3666,21 +3666,19 @@
                 "./loader.component.html"
             ],
             "viewProviders": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [
+            "inputsClass": [
                 {
-                    "name": "ngOnInit",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 12,
+                    "name": "loadingColor",
+                    "defaultValue": "'#869d7a'",
                     "deprecated": false,
-                    "deprecationMessage": ""
+                    "deprecationMessage": "",
+                    "line": 10,
+                    "type": "string"
                 }
             ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -3688,7 +3686,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-loader',\n  templateUrl: './loader.component.html',\n  styleUrls: ['./loader.component.scss']\n})\nexport class LoaderComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'app-loader',\n  templateUrl: './loader.component.html',\n  styleUrls: ['./loader.component.scss']\n})\nexport class LoaderComponent {\n\n  @Input() loadingColor = '#869d7a'\n\n  constructor() { }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -3703,12 +3701,9 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 8
+                "line": 10
             },
-            "implements": [
-                "OnInit"
-            ],
-            "templateData": "<div class=\"blur\">\n  <div class=\"loader\"></div>\n  <p>Loading...</p>\n</div>\n"
+            "templateData": "<div class=\"blur\">\n  <div class=\"loader\" [ngStyle]=\"{ 'border-top-color': loadingColor }\"></div>\n  <p>Loading...</p>\n</div>\n"
         },
         {
             "name": "LoginComponent",
@@ -4241,7 +4236,7 @@
         },
         {
             "name": "MessageComponent",
-            "id": "component-MessageComponent-b199e6b60243d0a3451736c0499b3ae4",
+            "id": "component-MessageComponent-3c9becc864df97906895498da50ba97a",
             "file": "src/app/shared/components/message/message.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -4304,7 +4299,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 36,
+                    "line": 39,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -4326,11 +4321,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';\n\nimport { Message } from './Message';\n\n@Component({\n  selector: 'app-message',\n  templateUrl: './message.component.html',\n  styleUrls: ['./message.component.scss']\n})\nexport class MessageComponent implements OnInit {\n\n  @Input() message: Message\n  @Output() closeMessage = new EventEmitter<boolean>();\n  messageStyle: string;\n\n  constructor() { }\n\n  ngOnInit(): void {\n    this.setSeverity();\n  }\n\n  setSeverity() {\n    switch (this.message.severity) {\n      case 'error':\n        this.messageStyle = 'error';\n        break;\n      case 'success':\n        this.messageStyle = 'success';\n        break;\n      default:\n        this.messageStyle = 'success';\n        break;\n    }\n  }\n\n  onClose() {\n    this.closeMessage.emit(true);\n  }\n\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';\n\nimport { Message } from './Message';\n\n@Component({\n  selector: 'app-message',\n  templateUrl: './message.component.html',\n  styleUrls: ['./message.component.scss']\n})\nexport class MessageComponent implements OnInit {\n\n  @Input() message: Message\n  @Output() closeMessage = new EventEmitter<boolean>();\n  messageStyle: string;\n\n  constructor() { }\n\n  ngOnInit(): void {\n    this.setSeverity();\n  }\n\n  setSeverity() {\n    switch (this.message.severity) {\n      case 'error':\n        this.messageStyle = 'error';\n        break;\n      case 'success':\n        this.messageStyle = 'success';\n        break;\n      case 'warn':\n        this.messageStyle = 'warn';\n        break;\n      default:\n        this.messageStyle = 'success';\n        break;\n    }\n  }\n\n  onClose() {\n    this.closeMessage.emit(true);\n  }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".success > header, .success > header > div {\r\n  background-color: #51c257;\r\n}\r\n\r\n.error > header, .error > header > div {\r\n  background-color: #d62f29;\r\n}\r\n\r\nheader {\r\n  padding: 0 1rem;\r\n  display: flex;\r\n  justify-content: space-between;\r\n  font-weight: bold;\r\n}\r\n\r\nheader > div {\r\n  cursor: pointer;\r\n}\r\n\r\nheader > div:hover {\r\n  color: white;\r\n}\r\n\r\nsection {\r\n  width: 20rem;\r\n  border: 2px solid black;\r\n  border-radius: .5rem;\r\n  position: fixed;\r\n  right: 1rem;\r\n  top: 1rem;\r\n  z-index: 2000;\r\n  overflow: hidden;\r\n  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;\r\n}\r\n\r\nbutton {\r\n  margin-top: 0.5rem;\r\n}\r\n\r\ndiv {\r\n  padding: 1rem;\r\n  background-color: white;\r\n}\r\n\r\n@media (max-width: 480px) {\r\n  section {\r\n    width: calc(100% - 2rem);\r\n  }\r\n}\r\n\r\n@media (min-width: 481px) and (max-width: 768px) {\r\n\r\n}\r\n",
+                    "data": ".success > header, .success > header > div {\r\n  background-color: #52a356;\r\n}\r\n\r\n.error > header, .error > header > div {\r\n  background-color: #d62f29;\r\n}\r\n\r\n.warn > header, .warn > header > div {\r\n  background-color: #e09406;\r\n}\r\n\r\nheader {\r\n  padding: 0 1rem;\r\n  display: flex;\r\n  justify-content: space-between;\r\n  font-weight: bold;\r\n}\r\n\r\nheader > div {\r\n  cursor: pointer;\r\n}\r\n\r\nheader > div:hover {\r\n  color: red;\r\n}\r\n\r\nsection {\r\n  width: 20rem;\r\n  border: 2px solid black;\r\n  border-radius: .5rem;\r\n  position: fixed;\r\n  right: 1rem;\r\n  top: 1rem;\r\n  z-index: 2000;\r\n  overflow: hidden;\r\n  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;\r\n}\r\n\r\nbutton {\r\n  margin-top: 0.5rem;\r\n}\r\n\r\ndiv {\r\n  padding: 1rem;\r\n  background-color: white;\r\n}\r\n\r\n@media (max-width: 480px) {\r\n  section {\r\n    width: calc(100% - 2rem);\r\n  }\r\n}\r\n\r\n@media (min-width: 481px) and (max-width: 768px) {\r\n\r\n}\r\n",
                     "styleUrl": "./message.component.scss"
                 }
             ],
@@ -5225,14 +5220,34 @@
                 "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
             },
             {
-                "name": "environment",
+                "name": "DefaultLoading",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/environments/environment.ts",
+                "file": "src/app/shared/components/loader/loader.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "object",
-                "defaultValue": "{\r\n  production: false\r\n}"
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Delete",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/shared/components/confirmation/confirmation.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Edit",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/shared/components/confirmation/confirmation.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
             },
             {
                 "name": "environment",
@@ -5243,6 +5258,26 @@
                 "deprecationMessage": "",
                 "type": "object",
                 "defaultValue": "{\r\n  production: true\r\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\r\n  production: false\r\n}"
+            },
+            {
+                "name": "Error",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/shared/components/message/message.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
             },
             {
                 "name": "fallbackRoute",
@@ -5259,16 +5294,6 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "src/stories/Button.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Template.bind({})"
-            },
-            {
-                "name": "Loading",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/app/shared/components/loader/loader.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -5374,6 +5399,16 @@
                 "defaultValue": "Template.bind({})"
             },
             {
+                "name": "Success",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/shared/components/message/message.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -5422,6 +5457,36 @@
                 "deprecationMessage": "",
                 "type": "Story<LoaderComponent>",
                 "defaultValue": "(args: LoaderComponent) => ({\r\n  props: args,\r\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/shared/components/confirmation/confirmation.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<ConfirmationComponent>",
+                "defaultValue": "(args: ConfirmationComponent) => ({\r\n  props: args,\r\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/shared/components/message/message.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<MessageComponent>",
+                "defaultValue": "(args: MessageComponent) => ({\r\n  props: args,\r\n})"
+            },
+            {
+                "name": "Warning",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/shared/components/message/message.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
             }
         ],
         "functions": [],
@@ -5493,16 +5558,58 @@
                     "type": "literal type"
                 }
             ],
-            "src/environments/environment.ts": [
+            "src/app/shared/components/loader/loader.stories.ts": [
                 {
-                    "name": "environment",
+                    "name": "DefaultLoading",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/environments/environment.ts",
+                    "file": "src/app/shared/components/loader/loader.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{\r\n  production: false\r\n}"
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/shared/components/loader/loader.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<LoaderComponent>",
+                    "defaultValue": "(args: LoaderComponent) => ({\r\n  props: args,\r\n})"
+                }
+            ],
+            "src/app/shared/components/confirmation/confirmation.stories.ts": [
+                {
+                    "name": "Delete",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/shared/components/confirmation/confirmation.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Edit",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/shared/components/confirmation/confirmation.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/shared/components/confirmation/confirmation.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<ConfirmationComponent>",
+                    "defaultValue": "(args: ConfirmationComponent) => ({\r\n  props: args,\r\n})"
                 }
             ],
             "src/environments/environment.prod.ts": [
@@ -5515,6 +5622,60 @@
                     "deprecationMessage": "",
                     "type": "object",
                     "defaultValue": "{\r\n  production: true\r\n}"
+                }
+            ],
+            "src/environments/environment.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\r\n  production: false\r\n}"
+                }
+            ],
+            "src/app/shared/components/message/message.stories.ts": [
+                {
+                    "name": "Error",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/shared/components/message/message.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Success",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/shared/components/message/message.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/shared/components/message/message.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<MessageComponent>",
+                    "defaultValue": "(args: MessageComponent) => ({\r\n  props: args,\r\n})"
+                },
+                {
+                    "name": "Warning",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/shared/components/message/message.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
                 }
             ],
             "src/app/app-routing.module.ts": [
@@ -5579,28 +5740,6 @@
                     "deprecationMessage": "",
                     "type": "Story<Button>",
                     "defaultValue": "(args: Button) => ({\n  props: args,\n})"
-                }
-            ],
-            "src/app/shared/components/loader/loader.stories.ts": [
-                {
-                    "name": "Loading",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/shared/components/loader/loader.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/shared/components/loader/loader.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story<LoaderComponent>",
-                    "defaultValue": "(args: LoaderComponent) => ({\r\n  props: args,\r\n})"
                 }
             ],
             "src/stories/Header.stories.ts": [
@@ -6040,6 +6179,36 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/shared/components/confirmation/confirmation.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Delete",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/confirmation/confirmation.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Edit",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/confirmation/confirmation.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/shared/components/loader/loader.component.ts",
                 "type": "component",
                 "linktype": "component",
@@ -6053,7 +6222,7 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "Loading",
+                "name": "DefaultLoading",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -6093,6 +6262,46 @@
                 "name": "MessageService",
                 "coveragePercent": 0,
                 "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/message/message.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Error",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/message/message.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Success",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/message/message.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/components/message/message.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Warning",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {

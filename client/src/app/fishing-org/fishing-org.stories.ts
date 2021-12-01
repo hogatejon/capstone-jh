@@ -27,3 +27,13 @@ const Template: Story<OrganizationComponent> = (args: OrganizationComponent) => 
 });
 
 export const AllOrgs = Template.bind({});
+AllOrgs.args = {
+  altText: false,
+  darkMode: false
+}
+
+export const DarkMode = Template.bind({});
+DarkMode.args = {
+  altText: false,
+  darkMode: true
+}

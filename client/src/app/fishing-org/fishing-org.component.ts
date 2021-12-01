@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { FishingOrganization } from '../models/FishingOrganization';
 import { OrganizationService } from '../services/organization.service';
@@ -11,6 +11,10 @@ import { Observable, Subject } from 'rxjs';
   styleUrls: ['./fishing-org.component.scss']
 })
 export class FishingOrgComponent implements OnInit {
+
+  @Input() altText = false;
+  @Input() darkMode = false;
+
   organizations$: Observable<FishingOrganization[]>;
 
   ngDestroyed$ = new Subject();
