@@ -9,6 +9,8 @@ More on the technical side, I created this app without the help of external UI F
 
 # How to Run
 
+Node v12
+
 ## Clone Repo
 First, you must clone the repo into your preferred editor.
 ## How to Start Server
